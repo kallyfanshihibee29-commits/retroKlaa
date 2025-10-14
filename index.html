@@ -206,6 +206,26 @@
                 <!-- Oferty Monetek -->
                 <div>
                     <h3 class="pacyfico text-2xl text-red-900 text-center mb-6">Oferty Monetek</h3>
+                    
+                    <!-- Darmowe monety -->
+                    <div class="mb-8 max-w-md mx-auto">
+                        <div class="bg-green-100 border-4 border-green-800 retro-shadow p-6 text-center">
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
+                                    <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                    <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                </svg>
+                                <span class="text-2xl font-bold text-gray-700">3500</span>
+                            </div>
+                            <p class="text-xl font-bold text-green-800 mb-2">DARMOWE!</p>
+                            <p class="text-sm text-gray-600 mb-4">Zaległe 17zł</p>
+                            <button onclick="claimFreeCoins()" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Odbierz
+                            </button>
+                        </div>
+                    </div>
+                    
                     <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                         <!-- 500 Monet -->
                         <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center">
@@ -332,6 +352,41 @@
                             Odbierz nagrodę
                         </button>
                     </div>
+
+                    <!-- Misja 3: Zbieranie monet -->
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="pacyfico text-xl text-red-900">Misja Zbieracza</h3>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">50</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-blue-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#1E40AF" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#60A5FA"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E40AF">K</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-700 mb-2">Etap <span id="collecting-stage">1</span>: Uzbieraj łącznie <span id="collecting-target">500</span> monet</p>
+                            <div class="bg-gray-200 rounded-full h-4 mb-2">
+                                <div id="collecting-progress" class="bg-green-600 h-4 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600">Postęp: <span id="collecting-current">0</span>/<span id="collecting-target-text">500</span></p>
+                        </div>
+                        <button id="collecting-claim" onclick="claimCollectingReward()" class="bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed" disabled>
+                            Odbierz nagrodę
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -372,6 +427,8 @@
         let readingProgress = 0;
         let buyingStage = 1;
         let buyingProgress = 0;
+        let collectingStage = 1;
+        let totalCoinsEarned = 0;
 
         // Load saved data
         function loadGameData() {
@@ -387,6 +444,8 @@
                 readingProgress = data.readingProgress || 0;
                 buyingStage = data.buyingStage || 1;
                 buyingProgress = data.buyingProgress || 0;
+                collectingStage = data.collectingStage || 1;
+                totalCoinsEarned = data.totalCoinsEarned || 0;
             }
         }
 
@@ -401,7 +460,9 @@
                 readingStage,
                 readingProgress,
                 buyingStage,
-                buyingProgress
+                buyingProgress,
+                collectingStage,
+                totalCoinsEarned
             };
             localStorage.setItem('retroBlogData', JSON.stringify(data));
         }
@@ -418,11 +479,35 @@
             message.innerHTML = `
                 <h3 class="pacyfico text-xl text-red-900 mb-4">Płatność</h3>
                 <p class="mb-4">Przekaż kwotę ${price} właścicielowi Bloga</p>
-                <button onclick="this.parentElement.remove(); coins += ${amount}; updateCoinDisplay(); saveGameData();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                <button onclick="this.parentElement.remove(); coins += ${amount}; totalCoinsEarned += ${amount}; updateCoinDisplay(); updateMissionProgress(); saveGameData();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
                     Potwierdzam płatność
                 </button>
                 <button onclick="this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow ml-2">
                     Anuluj
+                </button>
+            `;
+            document.body.appendChild(message);
+        }
+
+        function claimFreeCoins() {
+            coins += 3500;
+            totalCoinsEarned += 3500;
+            updateCoinDisplay();
+            updateMissionProgress();
+            saveGameData();
+            
+            // Hide the free coins offer
+            const freeCoinsDiv = document.querySelector('.bg-green-100').parentElement;
+            freeCoinsDiv.style.display = 'none';
+            
+            // Show success message
+            const message = document.createElement('div');
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+            message.innerHTML = `
+                <h3 class="pacyfico text-xl text-green-800 mb-4">Gratulacje!</h3>
+                <p class="mb-4">Otrzymałeś 3500 darmowych monet!</p>
+                <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                    Świetnie!
                 </button>
             `;
             document.body.appendChild(message);
@@ -598,8 +683,8 @@
                 readingClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
             }
             
-            // Update buying mission
-            const buyingTarget = buyingStage;
+            // Update buying mission - każdy etap wymaga 1 wpis
+            const buyingTarget = 1;
             const buyingPercent = Math.min((buyingProgress / buyingTarget) * 100, 100);
             
             document.getElementById('buying-stage').textContent = buyingStage;
@@ -616,12 +701,32 @@
                 buyingClaimBtn.disabled = true;
                 buyingClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
             }
+            
+            // Update collecting mission
+            const collectingTarget = collectingStage * 500;
+            const collectingPercent = Math.min((totalCoinsEarned / collectingTarget) * 100, 100);
+            
+            document.getElementById('collecting-stage').textContent = collectingStage;
+            document.getElementById('collecting-target').textContent = collectingTarget;
+            document.getElementById('collecting-target-text').textContent = collectingTarget;
+            document.getElementById('collecting-current').textContent = totalCoinsEarned;
+            document.getElementById('collecting-progress').style.width = collectingPercent + '%';
+            
+            const collectingClaimBtn = document.getElementById('collecting-claim');
+            if (totalCoinsEarned >= collectingTarget) {
+                collectingClaimBtn.disabled = false;
+                collectingClaimBtn.className = 'bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow cursor-pointer';
+            } else {
+                collectingClaimBtn.disabled = true;
+                collectingClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
+            }
         }
 
         function claimReadingReward() {
             const readingTarget = 3;
             if (readingProgress >= readingTarget) {
                 coins += 10;
+                totalCoinsEarned += 10;
                 credits += 100;
                 readingStage++;
                 readingProgress = 0;
@@ -646,8 +751,9 @@
         }
 
         function claimBuyingReward() {
-            if (buyingProgress >= buyingStage) {
+            if (buyingProgress >= 1) {
                 coins += 50;
+                totalCoinsEarned += 50;
                 credits += 100;
                 buyingStage++;
                 buyingProgress = 0;
@@ -662,7 +768,36 @@
                 message.innerHTML = `
                     <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
                     <p class="mb-4">Otrzymałeś 50 monet i 100 kredytów!</p>
-                    <p class="mb-4">Następny etap: Kup ${buyingStage} wpisów ze sklepu</p>
+                    <p class="mb-4">Następny etap: Kup 1 wpis ze sklepu</p>
+                    <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+            }
+        }
+
+        function claimCollectingReward() {
+            const collectingTarget = collectingStage * 500;
+            if (totalCoinsEarned >= collectingTarget) {
+                coins += 50;
+                totalCoinsEarned += 50;
+                credits += 500;
+                collectingStage++;
+                
+                updateCoinDisplay();
+                updateMissionProgress();
+                saveGameData();
+                
+                const nextTarget = collectingStage * 500;
+                
+                // Show reward message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
+                    <p class="mb-4">Otrzymałeś 50 monet i 500 kredytów!</p>
+                    <p class="mb-4">Następny etap: Uzbieraj łącznie ${nextTarget} monet</p>
                     <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
                         OK
                     </button>
@@ -738,8 +873,52 @@
                     
                     <p>Bel Air z 1955 roku szybko stał się ikoną popkultury. Występował w filmach, na plakatach i w reklamach, symbolizując styl życia Ameryki lat pięćdziesiątych – epokę jukeboxów, drive-inów i wolności na szerokich drogach. Wersje coupe i kabriolet cieszyły się ogromnym zainteresowaniem, a charakterystyczny błysk chromu i dwukolorowe lakierowanie uczyniły z Bel Aira motoryzacyjny znak rozpoznawczy swojej epoki. Wraz z modelami z 1956 i 1957 roku stworzył tak zwaną „Tri-Five Chevy Trilogy", czyli trzyletnią serię, którą do dziś uważa się za złoty okres dla marki Chevrolet.</p>
                 `;
-            } else if (title === 'Porsche 911 Carrera 1973' || title === 'Dodge Charger R/T 1969' || title === 'Alfa Romeo Spider 1966') {
-                postContent.innerHTML = '<p class="text-center italic">Treść wkrótce...</p>';
+            } else if (title === 'Porsche 911 Carrera 1973') {
+                postContent.innerHTML = `
+                    <p>Porsche 911 Carrera z 1973 roku to samochód, który ugruntował pozycję niemieckiej marki jako jednego z liderów sportowej motoryzacji. To właśnie w tym okresie 911 przeszło z etapu obiecującego następcy modelu 356 do pełnoprawnej ikony. Rok 1973 był szczególny, ponieważ na drogi trafiła wersja Carrera RS 2.7 – model, który do dziś uchodzi za jeden z najdoskonalszych przykładów klasycznego Porsche, łączący lekkość, precyzję i czystą mechanikę jazdy bez zbędnych udogodnień.</p>
+                    
+                    <p>Stylistycznie Porsche 911 Carrera z 1973 roku zachowało charakterystyczną dla serii sylwetkę z zaokrąglonymi błotnikami, niską maską i opadającym tyłem. To klasyczny kształt „żabki", który mimo upływu lat pozostał niemal niezmieniony w ogólnym zarysie. W wersji Carrera RS 2.7 pojawiły się jednak detale, które od razu wyróżniały ten model. Najbardziej rozpoznawalny był niewielki spojler na tylnej klapie – tzw. „ducktail", czyli kaczuszka. Ten element nie był tylko ozdobą – znacząco poprawiał docisk tylnej osi przy dużych prędkościach, co w samochodzie o napędzie na tył miało ogromne znaczenie. Charakterystyczne były też naklejki boczne z napisem „Carrera" i lekkie zderzaki z tworzywa, wprowadzone w miejsce wcześniejszych chromowanych elementów, co pomogło zredukować masę pojazdu.</p>
+                    
+                    <p>Wnętrze Porsche 911 z tamtych lat to połączenie prostoty i funkcjonalności typowej dla niemieckiej szkoły projektowania. Kierowca miał przed sobą pięć dużych, okrągłych zegarów, z centralnie umieszczonym obrotomierzem – symbol filozofii Porsche, gdzie liczy się precyzja prowadzenia, a nie tylko prędkość. Fotele kubełkowe zapewniały doskonałe trzymanie boczne, a całość była wykonana z lekkich, solidnych materiałów, bez zbędnych ozdobników. To wnętrze stworzone do jazdy, a nie do pokazów. W wersjach sportowych zrezygnowano nawet z niektórych wygód, takich jak tylne siedzenia czy wyciszenie, by uzyskać jak najniższą masę – samochód ważył zaledwie około 975 kilogramów.</p>
+                    
+                    <p>Pod względem mechanicznym 911 Carrera 2.7 było prawdziwym arcydziełem inżynierii. Sześciocylindrowy, chłodzony powietrzem silnik typu bokser o pojemności 2,7 litra generował 210 koni mechanicznych przy 6300 obr./min. Dzięki temu auto osiągało prędkość maksymalną około 240 km/h, a przyspieszenie od 0 do 100 km/h zajmowało nieco ponad 5,5 sekundy – wartości imponujące nawet dziś. Napęd na tylne koła w połączeniu z pięciobiegową skrzynią manualną i bardzo niską masą nadawały mu niezwykłej zwinności. Dla wielu kierowców 911 z tamtych lat było autem wymagającym – jego charakterystyczne rozłożenie masy sprawiało, że tylna oś łatwo traciła przyczepność, ale w rękach doświadczonego kierowcy samochód nagradzał perfekcyjnym wyczuciem drogi i reakcją na każdy ruch kierownicy.</p>
+                    
+                    <p>Zawieszenie Porsche 911 Carrera opierało się na układzie z drążkami skrętnymi i amortyzatorach Bilstein, co zapewniało wyjątkową stabilność i precyzję prowadzenia. Hamulce tarczowe na wszystkich kołach, wzmocnione i wentylowane, pozwalały skutecznie zatrzymać auto nawet po intensywnej jeździe torowej. Wszystko to razem czyniło z 911 Carrery z 1973 roku samochód, który łączył codzienną użyteczność z prawdziwie sportowymi osiągami. Był to pojazd, który można było prowadzić po publicznych drogach, ale też z powodzeniem wystawić w wyścigu.</p>
+                    
+                    <p>Rok 1973 był także symboliczny – to właśnie w tym czasie Porsche pożegnało erę klasycznych, lekkich modeli przed wprowadzeniem bardziej komfortowych wersji z drugiej połowy dekady. Carrera RS 2.7 była ostatnim „czystym" 911 w klasycznym rozumieniu – stworzonym przede wszystkim z myślą o kierowcy i jego bezpośrednim kontakcie z maszyną. Samochód powstał głównie po to, by homologować go do wyścigów w grupie 4, ale popyt na wersję drogową okazał się tak duży, że zamiast planowanych 500 egzemplarzy wyprodukowano ponad 1500 sztuk.</p>
+                `;
+            } else if (title === 'Dodge Charger R/T 1969') {
+                postContent.innerHTML = `
+                    <p>Dodge Charger R/T z 1969 roku to jeden z najbardziej rozpoznawalnych muscle carów w historii amerykańskiej motoryzacji. Był rozwinięciem koncepcji przedstawionej dwa lata wcześniej i jednym z najdoskonalszych przykładów tego, jak w końcówce lat sześćdziesiątych rozumiano pojęcie mocy, stylu i osiągów. Charger w wersji R/T (Road/Track) stanowił topową odmianę modelu, zaprojektowaną z myślą o kierowcach, którzy oczekiwali prawdziwych sportowych wrażeń, ale wciąż w granicach samochodu drogowego.</p>
+                    
+                    <p>Stylistycznie rocznik 1969 był ewolucją w stosunku do poprzedniego roku, lecz wprowadzono kilka kluczowych zmian. Przód auta otrzymał nowy grill z pełną czarną osłoną i ruchomymi klapkami zasłaniającymi reflektory – rozwiązanie, które nadawało mu agresywny, spójny wygląd. Linia boczna pozostała muskularna, z wyraźnie zaznaczonymi błotnikami i długą, opadającą linią dachu typu fastback. Charakterystyczny „Coke bottle shape", czyli nadwozie o kształcie przypominającym butelkę Coca-Coli, podkreślał szerokie nadkola i wąskie przetłoczenie w środkowej części karoserii. Tył zyskał nowy panel z dwiema prostokątnymi lampami i dużym, chromowanym napisem „CHARGER", który stał się jednym z najbardziej rozpoznawalnych elementów modelu. Całość była osadzona na potężnych, 15-calowych kołach, co jeszcze bardziej wzmacniało jego masywny charakter.</p>
+                    
+                    <p>Wnętrze Dodge'a Chargera R/T 1969 kontynuowało styl amerykańskich grand tourerów. Kabina była przestronna i wykończona z myślą o komforcie, ale bez utraty sportowego duchu. Duża kierownica, prosty zestaw zegarów i szeroka konsola środkowa podkreślały charakter auta stworzonego do jazdy z dużą prędkością. Fotele kubełkowe zapewniały solidne podparcie, a tylna kanapa była pełnowymiarowa, co sprawiało, że Charger pozostawał praktycznym samochodem na co dzień – mimo swoich sportowych ambicji.</p>
+                    
+                    <p>Pod maską wersji R/T kryło się to, co uczyniło Chargera legendą. Standardowo montowano silnik Magnum 440 V8 o pojemności 7,2 litra, rozwijający moc 375 koni mechanicznych i moment obrotowy 651 Nm. W połączeniu z czterobiegową skrzynią manualną lub automatyczną Torqueflite, auto przyspieszało od 0 do 100 km/h w około 6 sekund, a prędkość maksymalna sięgała 210 km/h. Dla najbardziej wymagających klientów dostępna była również legendarna jednostka Hemi 426 V8 o mocy 425 koni mechanicznych, która przenosiła Chargera na zupełnie inny poziom osiągów. Ten silnik pozwalał osiągać 100 km/h w nieco ponad 5 sekund i był jednym z najmocniejszych napędów oferowanych w seryjnych samochodach swojej epoki.</p>
+                    
+                    <p>Napęd na tylną oś, klasyczne zawieszenie na resorach piórowych i sztywny most tylny nadawały Chargerowi charakter typowego muscle cara – potężny moment obrotowy przenoszony był brutalnie, bez elektronicznych wspomagaczy, co wymagało od kierowcy pewnej ręki. Auto najlepiej czuło się na prostych odcinkach, gdzie jego potęga mogła w pełni się ujawnić. Mimo to, jak na tamte czasy, prowadzenie było zaskakująco stabilne, zwłaszcza w wersjach z opcjonalnym pakietem „Track Pak", który obejmował wzmocniony dyferencjał i lepsze przełożenia przekładni.</p>
+                    
+                    <p>Charger R/T 1969 był samochodem, który łączył surową siłę z elegancją amerykańskiego stylu. W porównaniu do innych muscle carów, takich jak Chevrolet Chevelle SS czy Ford Torino Cobra, wyróżniał się bardziej dopracowaną aerodynamiką i lepszym wyważeniem nadwozia. To sprawiło, że stał się nie tylko ulubieńcem ulicznych wyścigów, ale też atrakcyjną bazą dla modyfikacji. Wersje Hemi należą dziś do najbardziej pożądanych klasyków w historii Dodge'a.</p>
+                    
+                    <p>Rok 1969 przyniósł też moment, który na zawsze wpisał Chargera do popkultury – jego występ w filmie „Bullitt" u boku Forda Mustanga Steve'a McQueena oraz później w serialu „The Dukes of Hazzard". Te produkcje sprawiły, że czarny i pomarańczowy Charger z charakterystycznym profilem stały się ikonami ekranu.</p>
+                `;
+            } else if (title === 'Alfa Romeo Spider 1966') {
+                postContent.innerHTML = `
+                    <p>Alfa Romeo Spider z 1966 roku to jeden z najbardziej rozpoznawalnych włoskich roadsterów lat sześćdziesiątych. Model ten, debiutujący w wersji Duetto, szybko zdobył uznanie dzięki połączeniu lekkiej konstrukcji, atrakcyjnego wyglądu i przyjemności z prowadzenia. Spider powstał w momencie, gdy włoska marka stawiała na samochody sportowe dostępne także dla szerszej grupy kierowców, którzy szukali auta do codziennej jazdy i weekendowych wyjazdów.</p>
+                    
+                    <p>Stylistyka Spidera jest jedną z jego najsilniejszych cech. Projekt Pininfariny wyróżniał się prostotą, proporcjami i charakterystycznym, lekko opadającym tyłem. Długa, smukła maska i nisko osadzone nadwozie tworzyły elegancką sylwetkę, a okrągłe reflektory i chromowane detale podkreślały klasyczny włoski styl. Roadster był stosunkowo niewielki – długość wynosiła około 3,9 metra – co w połączeniu z lekką karoserią dawało dobre wyważenie i poprawiało prowadzenie. Dwumiejscowa kabina z minimalistycznym wnętrzem dopełniała sportowy charakter auta, pozostając jednocześnie komfortową i funkcjonalną.</p>
+                    
+                    <p>Wnętrze Spidera 1966 było proste i skoncentrowane na kierowcy. Kokpit posiadał zestaw podstawowych zegarów, skórzaną kierownicę oraz wygodne, nisko osadzone fotele kubełkowe. Całość była ergonomiczna i dostosowana do dynamicznej jazdy, jednocześnie zachowując włoską elegancję wykończenia. Materiały użyte w kabinie, choć nie luksusowe w dzisiejszym rozumieniu, były trwałe i estetyczne, a minimalistyczny design pozwalał skupić się na prowadzeniu.</p>
+                    
+                    <p>Pod maską Alfa Romeo Spider 1966 znajdował się czterocylindrowy silnik Twin Cam o pojemności 1,6 litra, generujący około 108 koni mechanicznych. W połączeniu z pięciobiegową skrzynią manualną pozwalał samochodowi osiągać prędkość maksymalną około 180 km/h, a przyspieszenie od 0 do 100 km/h zajmowało około 10 sekund. Dzięki niewielkiej masie auta – około 900 kilogramów – Spider był zwinny i precyzyjny w prowadzeniu. Napęd na tylne koła oraz sztywne, choć dobrze zestrojone zawieszenie sprawiały, że samochód był bardzo przewidywalny w zakrętach i dawał kierowcy pełną kontrolę nad pojazdem.</p>
+                    
+                    <p>Alfa Romeo Spider z 1966 roku była również samochodem wszechstronnym. Roadster dobrze radził sobie w codziennej eksploatacji, oferując komfortowe wnętrze i rozsądną przestrzeń bagażową jak na tego typu auto. Jednocześnie był przygotowany do dynamicznej jazdy po krętych drogach, co czyniło go popularnym wyborem wśród kierowców poszukujących auta zarówno do miasta, jak i na weekendowe wyjazdy.</p>
+                    
+                    <p>Model Duetto szybko zyskał rozgłos dzięki udziałowi w kulturze popularnej, m.in. w filmie „The Graduate" z 1967 roku, który dodatkowo utrwalił jego wizerunek jako klasycznego włoskiego roadstera. Spider był symbolem lekkości, zwinności i elegancji w motoryzacji lat sześćdziesiątych, jednocześnie oferując osiągi, które pozwalały konkurować z innymi europejskimi samochodami sportowymi tej klasy.</p>
+                    
+                    <p>Dziś Alfa Romeo Spider 1966 jest cenionym klasykiem. Zachowuje charakterystyczną stylistykę i proporcje, a prowadzenie wciąż dostarcza przyjemności z jazdy, którą doceniali pierwsi właściciele. To samochód, który łączy włoską elegancję z funkcjonalnością i sportowym duchem, będąc przykładem dopracowanego roadstera z lat sześćdziesiątych.</p>
+                `;
             } else {
                 postContent.innerHTML = '<p class="text-center italic">Treść wkrótce...</p>';
             }
@@ -755,5 +934,5 @@
         updateShopDisplay();
         updateMissionProgress();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e8c9d9e7aff9bf',t:'MTc2MDQ2Mjg1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e92c627506f9bf',t:'MTc2MDQ2Njg5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

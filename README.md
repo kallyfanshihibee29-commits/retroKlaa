@@ -1,2 +1,759 @@
-# retroKlaa
-/
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacyfico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+            background-color: #f5f5dc;
+        }
+        .pacyfico {
+            font-family: 'Pacyfico', cursive;
+        }
+        .retro-shadow {
+            box-shadow: 3px 3px 0px #8b4513;
+        }
+        .card-hover {
+            transition: all 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-full" style="background-color: #f5f5dc;">
+    <div class="min-h-full">
+        <!-- Header with Navigation -->
+        <header style="background-color: #f5f5dc;" class="border-b-4 border-red-900">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <div class="flex justify-center items-center gap-4 mb-4">
+                    <div class="bg-yellow-400 border-4 border-yellow-600 retro-shadow px-4 py-2 flex items-center gap-2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" class="text-yellow-800">
+                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                        </svg>
+                        <span class="font-bold text-yellow-800" id="coin-count">0</span>
+                        <span class="text-yellow-800">Monet</span>
+                    </div>
+                    <div class="bg-blue-400 border-4 border-blue-600 retro-shadow px-4 py-2 flex items-center gap-2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" class="text-blue-800">
+                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#1E40AF" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="6" fill="#60A5FA"/>
+                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E40AF">K</text>
+                        </svg>
+                        <span class="font-bold text-blue-800" id="credit-count">0</span>
+                        <span class="text-blue-800">Kredytów</span>
+                    </div>
+                </div>
+                <h1 class="pacyfico text-5xl md:text-6xl text-red-900 text-center mb-8">
+                    Klasyka
+                </h1>
+                
+                <!-- Navigation -->
+                <nav class="flex flex-wrap justify-center gap-4">
+                    <button onclick="showSection('wpisy')" id="btn-wpisy" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200">
+                        Wpisy
+                    </button>
+                    <button onclick="showSection('sklep')" id="btn-sklep" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200">
+                        Sklep
+                    </button>
+                    <button onclick="showSection('misje')" id="btn-misje" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200">
+                        Misje
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content-area max-w-6xl mx-auto px-4 py-8">
+            <!-- Wpisy Section -->
+            <div id="wpisy-section" class="section">
+                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8">Najnowsze Wpisy</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Wpis 1 -->
+                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                        <div class="bg-red-900 p-4">
+                            <h3 class="pacyfico text-xl text-white text-center">Ford Mustang Fastback '67</h3>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                                <img src="zdjęcie_1.png" alt="Ford Mustang Fastback '67" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_1.png</span>';">
+                            </div>
+                            <button onclick="openPost('Ford Mustang Fastback \'67')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Czytaj
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wpis 2 -->
+                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                        <div class="bg-red-900 p-4">
+                            <h3 class="pacyfico text-xl text-white text-center">Jaguar E-Type 1963</h3>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                                <img src="zdjęcie_2.png" alt="Jaguar E-Type 1963" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_2.png</span>';">
+                            </div>
+                            <button onclick="openPost('Jaguar E-Type 1963')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Czytaj
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wpis 3 -->
+                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                        <div class="bg-red-900 p-4">
+                            <h3 class="pacyfico text-xl text-white text-center">Chevrolet Bel Air 1955</h3>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                                <img src="zdjęcie_3.png" alt="Chevrolet Bel Air 1955" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_3.png</span>';">
+                            </div>
+                            <button onclick="openPost('Chevrolet Bel Air 1955')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Czytaj
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sklep Section -->
+            <div id="sklep-section" class="section hidden">
+                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8">Sklep</h2>
+                
+                <!-- Dodatkowe Wpisy -->
+                <div class="mb-12">
+                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6">Dodatkowe Wpisy</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <!-- Porsche 911 -->
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                            <div class="bg-red-900 p-4">
+                                <h4 class="pacyfico text-lg text-white text-center">Porsche 911 Carrera 1973</h4>
+                            </div>
+                            <div class="p-4">
+                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                                    <img src="zdjęcie_4.png" alt="Porsche 911 Carrera 1973" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_4.png</span>';">
+                                </div>
+                                <div class="flex items-center justify-center gap-2 mb-3">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">500</span>
+                                </div>
+                                <button onclick="buyPost('Porsche 911 Carrera 1973', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                    Kup
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Dodge Charger -->
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                            <div class="bg-red-900 p-4">
+                                <h4 class="pacyfico text-lg text-white text-center">Dodge Charger R/T 1969</h4>
+                            </div>
+                            <div class="p-4">
+                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                                    <img src="zdjęcie_5.png" alt="Dodge Charger R/T 1969" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_5.png</span>';">
+                                </div>
+                                <div class="flex items-center justify-center gap-2 mb-3">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">500</span>
+                                </div>
+                                <button onclick="buyPost('Dodge Charger R/T 1969', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                    Kup
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Alfa Romeo -->
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                            <div class="bg-red-900 p-4">
+                                <h4 class="pacyfico text-lg text-white text-center">Alfa Romeo Spider 1966</h4>
+                            </div>
+                            <div class="p-4">
+                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                                    <img src="zdjęcie_6.png" alt="Alfa Romeo Spider 1966" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_6.png</span>';">
+                                </div>
+                                <div class="flex items-center justify-center gap-2 mb-3">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">500</span>
+                                </div>
+                                <button onclick="buyPost('Alfa Romeo Spider 1966', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                    Kup
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oferty Monetek -->
+                <div>
+                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6">Oferty Monetek</h3>
+                    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        <!-- 500 Monet -->
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center">
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
+                                    <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                    <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                </svg>
+                                <span class="text-2xl font-bold text-gray-700">500</span>
+                            </div>
+                            <p class="text-xl font-bold text-red-900 mb-4">2,99 zł</p>
+                            <button onclick="buyCoins(500, '2,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Kup
+                            </button>
+                        </div>
+
+                        <!-- 1000 Monet -->
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center">
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
+                                    <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                    <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                </svg>
+                                <span class="text-2xl font-bold text-gray-700">1000</span>
+                            </div>
+                            <p class="text-xl font-bold text-red-900 mb-4">4,99 zł</p>
+                            <button onclick="buyCoins(1000, '4,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Kup
+                            </button>
+                        </div>
+
+                        <!-- 1500 Monet -->
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center">
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
+                                    <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                    <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                </svg>
+                                <span class="text-2xl font-bold text-gray-700">1500</span>
+                            </div>
+                            <p class="text-xl font-bold text-red-900 mb-4">7,99 zł</p>
+                            <button onclick="buyCoins(1500, '7,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Kup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Misje Section -->
+            <div id="misje-section" class="section hidden">
+                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8">Misje</h2>
+                
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <!-- Misja 1: Czytanie wpisów -->
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="pacyfico text-xl text-red-900">Misja Czytelnika</h3>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">10</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-blue-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#1E40AF" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#60A5FA"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E40AF">K</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-700 mb-2">Etap <span id="reading-stage">1</span>: Przeczytaj <span id="reading-target">3</span> wpisów</p>
+                            <div class="bg-gray-200 rounded-full h-4 mb-2">
+                                <div id="reading-progress" class="bg-green-600 h-4 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600">Postęp: <span id="reading-current">0</span>/<span id="reading-target-text">3</span></p>
+                        </div>
+                        <button id="reading-claim" onclick="claimReadingReward()" class="bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed" disabled>
+                            Odbierz nagrodę
+                        </button>
+                    </div>
+
+                    <!-- Misja 2: Kupowanie wpisów -->
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="pacyfico text-xl text-red-900">Misja Kolekcjonera</h3>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">50</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-blue-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#1E40AF" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#60A5FA"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E40AF">K</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-700 mb-2">Etap <span id="buying-stage">1</span>: Kup <span id="buying-target">1</span> wpis ze sklepu</p>
+                            <div class="bg-gray-200 rounded-full h-4 mb-2">
+                                <div id="buying-progress" class="bg-green-600 h-4 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600">Postęp: <span id="buying-current">0</span>/<span id="buying-target-text">1</span></p>
+                        </div>
+                        <button id="buying-claim" onclick="claimBuyingReward()" class="bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed" disabled>
+                            Odbierz nagrodę
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post View Section -->
+            <div id="post-section" class="section hidden">
+                <div class="max-w-3xl mx-auto">
+                    <button onclick="showSection('wpisy')" class="mb-6 bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                        ← Powrót do wpisów
+                    </button>
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-8">
+                        <h2 id="post-title" class="pacyfico text-3xl text-red-900 text-center mb-6"></h2>
+                        <div class="prose max-w-none">
+                            <div id="post-content" class="text-gray-700 text-lg leading-relaxed text-justify space-y-4">
+                                <p class="text-center italic">Treść wkrótce...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer style="background-color: #f5f5dc;" class="border-t-4 border-red-900 text-red-900 text-center py-6 mt-12">
+            <p class="pacyfico text-lg">© 2024 Klasyka - Klasyczne Samochody</p>
+        </footer>
+    </div>
+
+    <script>
+        // Game state
+        let coins = 0;
+        let credits = 0;
+        let ownedPosts = [];
+        let readPosts = [];
+        let availableShopPosts = ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966'];
+        
+        // Mission progress
+        let readingStage = 1;
+        let readingProgress = 0;
+        let buyingStage = 1;
+        let buyingProgress = 0;
+
+        // Load saved data
+        function loadGameData() {
+            const savedData = localStorage.getItem('retroBlogData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                coins = data.coins || 0;
+                credits = data.credits || 0;
+                ownedPosts = data.ownedPosts || [];
+                readPosts = data.readPosts || [];
+                availableShopPosts = data.availableShopPosts || ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966'];
+                readingStage = data.readingStage || 1;
+                readingProgress = data.readingProgress || 0;
+                buyingStage = data.buyingStage || 1;
+                buyingProgress = data.buyingProgress || 0;
+            }
+        }
+
+        // Save game data
+        function saveGameData() {
+            const data = {
+                coins,
+                credits,
+                ownedPosts,
+                readPosts,
+                availableShopPosts,
+                readingStage,
+                readingProgress,
+                buyingStage,
+                buyingProgress
+            };
+            localStorage.setItem('retroBlogData', JSON.stringify(data));
+        }
+
+        function updateCoinDisplay() {
+            document.getElementById('coin-count').textContent = coins;
+            document.getElementById('credit-count').textContent = credits;
+        }
+
+        function buyCoins(amount, price) {
+            // Show payment message
+            const message = document.createElement('div');
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50';
+            message.innerHTML = `
+                <h3 class="pacyfico text-xl text-red-900 mb-4">Płatność</h3>
+                <p class="mb-4">Przekaż kwotę ${price} właścicielowi Bloga</p>
+                <button onclick="this.parentElement.remove(); coins += ${amount}; updateCoinDisplay(); saveGameData();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                    Potwierdzam płatność
+                </button>
+                <button onclick="this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow ml-2">
+                    Anuluj
+                </button>
+            `;
+            document.body.appendChild(message);
+        }
+
+        function buyPost(postTitle, cost) {
+            if (coins >= cost) {
+                coins -= cost;
+                ownedPosts.push(postTitle);
+                
+                // Remove from available shop posts
+                availableShopPosts = availableShopPosts.filter(post => post !== postTitle);
+                
+                // Update buying mission progress
+                buyingProgress++;
+                updateMissionProgress();
+                
+                updateCoinDisplay();
+                updatePostsDisplay();
+                updateShopDisplay();
+                saveGameData();
+                
+                // Show success message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-green-800 mb-4">Sukces!</h3>
+                    <p class="mb-4">Wpis "${postTitle}" został dodany do Twoich wpisów!</p>
+                    <button onclick="this.parentElement.remove(); showSection('wpisy');" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                        Przejdź do wpisów
+                    </button>
+                `;
+                document.body.appendChild(message);
+            } else {
+                // Show insufficient funds message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-red-900 mb-4">Brak środków</h3>
+                    <p class="mb-4">Potrzebujesz ${cost} monet, a masz tylko ${coins}.</p>
+                    <button onclick="this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+            }
+        }
+
+        function updatePostsDisplay() {
+            const postsContainer = document.querySelector('#wpisy-section .grid');
+            
+            // Add owned posts to the display
+            ownedPosts.forEach(postTitle => {
+                if (!document.querySelector(`[data-post="${postTitle}"]`)) {
+                    let imageSrc, imageAlt;
+                    if (postTitle === 'Porsche 911 Carrera 1973') {
+                        imageSrc = 'zdjęcie_4.png';
+                        imageAlt = 'Porsche 911 Carrera 1973';
+                    } else if (postTitle === 'Dodge Charger R/T 1969') {
+                        imageSrc = 'zdjęcie_5.png';
+                        imageAlt = 'Dodge Charger R/T 1969';
+                    } else if (postTitle === 'Alfa Romeo Spider 1966') {
+                        imageSrc = 'zdjęcie_6.png';
+                        imageAlt = 'Alfa Romeo Spider 1966';
+                    }
+                    
+                    const isRead = readPosts.includes(postTitle);
+                    const buttonText = isRead ? 'Przeczytano' : 'Czytaj';
+                    const buttonClass = isRead ? 'bg-gray-600 hover:bg-gray-500' : 'bg-green-800 hover:bg-green-700';
+                    
+                    const postCard = document.createElement('div');
+                    postCard.className = 'card-hover bg-white border-4 border-red-900 retro-shadow';
+                    postCard.setAttribute('data-post', postTitle);
+                    postCard.innerHTML = `
+                        <div class="bg-red-900 p-4">
+                            <h3 class="pacyfico text-xl text-white text-center">${postTitle}</h3>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                                <img src="${imageSrc}" alt="${imageAlt}" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>${imageSrc}</span>';">
+                            </div>
+                            <button onclick="openPost('${postTitle}')" class="w-full ${buttonClass} text-white font-bold py-2 px-4 retro-shadow transition-all duration-200" id="btn-${postTitle.replace(/\s+/g, '-')}">
+                                ${buttonText}
+                            </button>
+                        </div>
+                    `;
+                    postsContainer.appendChild(postCard);
+                }
+            });
+        }
+
+        function updateShopDisplay() {
+            const shopContainer = document.querySelector('#sklep-section .grid');
+            shopContainer.innerHTML = '';
+            
+            availableShopPosts.forEach(postTitle => {
+                let imageSrc, imageAlt;
+                if (postTitle === 'Porsche 911 Carrera 1973') {
+                    imageSrc = 'zdjęcie_4.png';
+                    imageAlt = 'Porsche 911 Carrera 1973';
+                } else if (postTitle === 'Dodge Charger R/T 1969') {
+                    imageSrc = 'zdjęcie_5.png';
+                    imageAlt = 'Dodge Charger R/T 1969';
+                } else if (postTitle === 'Alfa Romeo Spider 1966') {
+                    imageSrc = 'zdjęcie_6.png';
+                    imageAlt = 'Alfa Romeo Spider 1966';
+                }
+                
+                const postCard = document.createElement('div');
+                postCard.className = 'card-hover bg-white border-4 border-red-900 retro-shadow';
+                postCard.innerHTML = `
+                    <div class="bg-red-900 p-4">
+                        <h4 class="pacyfico text-lg text-white text-center">${postTitle}</h4>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
+                            <img src="${imageSrc}" alt="${imageAlt}" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>${imageSrc}</span>';">
+                        </div>
+                        <div class="flex items-center justify-center gap-2 mb-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
+                                <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                            </svg>
+                            <span class="font-bold text-gray-700">500</span>
+                        </div>
+                        <button onclick="buyPost('${postTitle}', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            Kup
+                        </button>
+                    </div>
+                `;
+                shopContainer.appendChild(postCard);
+            });
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.add('hidden'));
+            
+            // Show selected section
+            document.getElementById(sectionName + '-section').classList.remove('hidden');
+            
+            // Update button styles
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => {
+                btn.style.transform = 'none';
+                btn.style.boxShadow = '3px 3px 0px #8b4513';
+            });
+            
+            const activeBtn = document.getElementById('btn-' + sectionName);
+            activeBtn.style.transform = 'translateY(2px)';
+            activeBtn.style.boxShadow = '1px 1px 0px #8b4513';
+        }
+
+        function updateMissionProgress() {
+            // Update reading mission
+            const readingTarget = 3;
+            const readingPercent = Math.min((readingProgress / readingTarget) * 100, 100);
+            
+            document.getElementById('reading-stage').textContent = readingStage;
+            document.getElementById('reading-target').textContent = readingTarget;
+            document.getElementById('reading-target-text').textContent = readingTarget;
+            document.getElementById('reading-current').textContent = readingProgress;
+            document.getElementById('reading-progress').style.width = readingPercent + '%';
+            
+            const readingClaimBtn = document.getElementById('reading-claim');
+            if (readingProgress >= readingTarget) {
+                readingClaimBtn.disabled = false;
+                readingClaimBtn.className = 'bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow cursor-pointer';
+            } else {
+                readingClaimBtn.disabled = true;
+                readingClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
+            }
+            
+            // Update buying mission
+            const buyingTarget = buyingStage;
+            const buyingPercent = Math.min((buyingProgress / buyingTarget) * 100, 100);
+            
+            document.getElementById('buying-stage').textContent = buyingStage;
+            document.getElementById('buying-target').textContent = buyingTarget;
+            document.getElementById('buying-target-text').textContent = buyingTarget;
+            document.getElementById('buying-current').textContent = buyingProgress;
+            document.getElementById('buying-progress').style.width = buyingPercent + '%';
+            
+            const buyingClaimBtn = document.getElementById('buying-claim');
+            if (buyingProgress >= buyingTarget) {
+                buyingClaimBtn.disabled = false;
+                buyingClaimBtn.className = 'bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow cursor-pointer';
+            } else {
+                buyingClaimBtn.disabled = true;
+                buyingClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
+            }
+        }
+
+        function claimReadingReward() {
+            const readingTarget = 3;
+            if (readingProgress >= readingTarget) {
+                coins += 10;
+                credits += 100;
+                readingStage++;
+                readingProgress = 0;
+                
+                updateCoinDisplay();
+                updateMissionProgress();
+                saveGameData();
+                
+                // Show reward message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
+                    <p class="mb-4">Otrzymałeś 10 monet i 100 kredytów!</p>
+                    <p class="mb-4">Następny etap: Przeczytaj 3 wpisy</p>
+                    <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+            }
+        }
+
+        function claimBuyingReward() {
+            if (buyingProgress >= buyingStage) {
+                coins += 50;
+                credits += 100;
+                buyingStage++;
+                buyingProgress = 0;
+                
+                updateCoinDisplay();
+                updateMissionProgress();
+                saveGameData();
+                
+                // Show reward message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
+                    <p class="mb-4">Otrzymałeś 50 monet i 100 kredytów!</p>
+                    <p class="mb-4">Następny etap: Kup ${buyingStage} wpisów ze sklepu</p>
+                    <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+            }
+        }
+
+        function openPost(title) {
+            // Mark as read if not already read
+            if (!readPosts.includes(title)) {
+                readPosts.push(title);
+                readingProgress++;
+                updateMissionProgress();
+                saveGameData();
+                
+                // Update button text
+                const buttonId = 'btn-' + title.replace(/\s+/g, '-');
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.textContent = 'Przeczytano';
+                    button.className = 'w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200';
+                }
+            }
+            
+            document.getElementById('post-title').textContent = title;
+            
+            const postContent = document.getElementById('post-content');
+            
+            if (title === 'Ford Mustang Fastback \'67') {
+                postContent.innerHTML = `
+                    <p>Ford Mustang Fastback z 1967 roku to samochód, który dla wielu stanowi kwintesencję klasycznego amerykańskiego muscle cara. To nie tylko pojazd, ale prawdziwy fragment historii motoryzacji, który do dziś budzi emocje zarówno wśród kolekcjonerów, jak i zwykłych miłośników motoryzacyjnego stylu. Rok 1967 był dla Mustanga wyjątkowy — to właśnie wtedy Ford dopracował pierwszą generację modelu, nadając mu bardziej muskularny wygląd, lepsze osiągi i charakter, który do dziś definiuje pojęcie sportowego samochodu z duszą.</p>
+                    
+                    <p>Stylistycznie Mustang Fastback '67 to połączenie elegancji z agresją. Nadwozie ma smukłą, ale wyraźnie poszerzoną sylwetkę w porównaniu do wcześniejszych roczników. Długa maska, krótki tył i płynnie opadająca linia dachu to esencja aerodynamiki lat sześćdziesiątych – jeszcze zanim zaczęto o niej mówić w nowoczesnych kategoriach. Przód auta to klasyka gatunku: szeroki grill z ikoną galopującego mustanga, chromowane ramki reflektorów i lekko zarysowane przetłoczenia na masce. Tył natomiast zdradza sportowe ambicje – trójdzielne lampy, masywne zderzaki i linia dachu, która płynnie schodzi ku klapie bagażnika, nadają mu niepowtarzalny charakter. Mustang z 1967 roku wygląda jak drapieżnik gotowy do skoku, nawet kiedy stoi zaparkowany.</p>
+                    
+                    <p>Wnętrze to typowy przykład amerykańskiego podejścia do komfortu i stylu. Siedzenia kubełkowe, obszyte skórą, głęboko osadzone zegary w metalowych ramkach i charakterystyczna kierownica z trzema ramionami tworzą atmosferę prawdziwego kokpitu kierowcy. Nie jest to jednak wnętrze z epoki luksusu – to przestrzeń, w której liczy się jazda, dźwięk silnika i poczucie panowania nad maszyną. W 1967 roku Mustang był samochodem, który łączył sportowe osiągi z codzienną użytecznością, a jego kabina doskonale to oddaje.</p>
+                    
+                    <p>Pod maską działo się jeszcze więcej. Ford oferował wówczas kilka wariantów silnikowych, ale to właśnie wersje z jednostkami V8 stały się legendą. Najmocniejsze konfiguracje dysponowały 6,4-litrowym silnikiem o mocy sięgającej nawet 320 koni mechanicznych. Dla tamtych czasów to była prawdziwa bestia. Sprint do setki zajmował mu niewiele ponad 6 sekund, a dźwięk wydechu był tak charakterystyczny, że nie sposób go pomylić z czymkolwiek innym. Mustang nie potrzebował turbosprężarek ani elektronicznych wspomagaczy – czysta, mechaniczna moc, przenoszona przez klasyczny, czterobiegowy manual, wystarczała, by kierowca czuł się jak król szos.</p>
+                    
+                    <p>Układ jezdny Mustanga z 1967 roku był oczywiście daleki od współczesnych standardów sportowych aut, ale miał w sobie coś, czego dzisiejsze samochody często nie mają – autentyczność. Twarde zawieszenie, klasyczny napęd na tył i brak nadmiernej elektroniki sprawiały, że każdy zakręt wymagał skupienia. To był samochód, który trzeba było prowadzić z sercem i umiejętnością. Mustang nagradzał kierowcę za precyzję, a jednocześnie wybaczał błędy, jeśli czuło się jego rytm. To właśnie to połączenie dzikości i kontroli sprawiło, że Fastback stał się ikoną kultury samochodowej.</p>
+                    
+                    <p>Nie można też pominąć faktu, że Mustang Fastback z 1967 roku był autem wyjątkowo fotogenicznym. Jego charakterystyczna sylwetka została uwieczniona w dziesiątkach filmów, z czego najbardziej znanym pozostaje „Bullitt" z 1968 roku, gdzie Steve McQueen za kierownicą zielonego Mustanga ściga się ulicami San Francisco. To ujęcie, ten dźwięk, ten moment – to wszystko sprawiło, że Mustang z '67 przeszedł do legendy kina i popkultury. Dziś to nie tylko samochód, ale symbol pewnej epoki, wolności i odwagi na drodze.</p>
+                `;
+            } else if (title === 'Jaguar E-Type 1963') {
+                postContent.innerHTML = `
+                    <p>Jaguar E-Type z 1963 roku to jeden z najbardziej charakterystycznych samochodów sportowych XX wieku. Brytyjski producent stworzył auto, które łączyło osiągi rasowego wyścigowca z elegancją i komfortem klasycznego grand tourera. Debiutując na salonie w Genewie w 1961 roku, E-Type wywołał ogromne poruszenie. W 1963 roku model ten był już dopracowany technicznie i potwierdzał swoją pozycję jako symbol stylu, precyzji i szybkości.</p>
+                    
+                    <p>Pod względem wyglądu Jaguar E-Type był rewolucyjny. Długa, opływowa maska, nisko osadzone nadwozie i charakterystyczna, smukła tylna część nadawały mu niezwykle aerodynamiczną sylwetkę. Auto mierzyło niespełna 4,5 metra długości, ale dzięki proporcjom wyglądało, jakby miało znacznie więcej mocy, niż sugerowały liczby. Projekt nadwozia, autorstwa Malcolma Sayera, inżyniera aerodynamicznego, był inspirowany samolotami – każdy detal miał funkcję. W efekcie powstała linia, która do dziś uchodzi za jedną z najpiękniejszych w historii motoryzacji. Enzo Ferrari miał powiedzieć, że to „najpiękniejszy samochód, jaki kiedykolwiek powstał" – i trudno się z tym nie zgodzić.</p>
+                    
+                    <p>Wnętrze Jaguara E-Type w 1963 roku łączyło elegancję z funkcjonalnością. Kokpit był zorientowany na kierowcę – metalowa konsola środkowa, zestaw klasycznych zegarów Smiths, cienka kierownica z drewnianym wieńcem i skórzane fotele zapewniały nie tylko komfort, ale i doskonałą pozycję za kierownicą. W tamtym okresie niewiele aut oferowało tak wysoką jakość wykonania w połączeniu z prawdziwie sportowym charakterem. E-Type był samochodem, w którym można było zarówno wziąć udział w rajdzie, jak i pojechać w długą trasę po Europie.</p>
+                    
+                    <p>Sercem modelu był sześciocylindrowy, rzędowy silnik o pojemności 3,8 litra. Jednostka generowała 265 koni mechanicznych i pozwalała osiągnąć prędkość maksymalną około 240 km/h. Sprint od 0 do 100 km/h zajmował około 7 sekund, co jak na początek lat 60. było wynikiem imponującym. Napęd przenoszony był na tylne koła za pośrednictwem czterobiegowej skrzyni manualnej. Wersja z 1963 roku była szczególnie ceniona za swoje prowadzenie – niezależne zawieszenie tylne i precyzyjny układ kierowniczy sprawiały, że samochód zachowywał się stabilnie nawet przy dużych prędkościach, co w tamtych czasach nie było oczywistością.</p>
+                    
+                    <p>W porównaniu z konkurencją, Jaguar E-Type oferował niezwykle korzystny stosunek ceny do osiągów. O ile włoskie samochody sportowe były wtedy ekskluzywnym towarem, E-Type był relatywnie dostępny – a przy tym dawał podobne emocje z jazdy. Zawdzięczał to doświadczeniu Jaguara w wyścigach, zwłaszcza w modelach D-Type, które dominowały w Le Mans. Wiele rozwiązań technicznych, takich jak aerodynamiczny kształt karoserii, niskie zawieszenie i hamulce tarczowe, trafiło do E-Type'a wprost z toru wyścigowego.</p>
+                    
+                    <p>Jazda tym samochodem to doświadczenie, które łączy precyzję z surowością klasycznej motoryzacji. Silnik reaguje błyskawicznie na dodanie gazu, dźwięk jednostki jest pełny i mechaniczny, a przyspieszenie – płynne, ale zdecydowane. Zawieszenie, choć twarde, doskonale radzi sobie z zakrętami, a przy wyższych prędkościach samochód zachowuje zadziwiającą stabilność. To auto, które wymaga od kierowcy uwagi, ale też daje pełne poczucie kontroli.</p>
+                    
+                    <p>W 1963 roku Jaguar E-Type dostępny był zarówno jako dwuosobowe coupé, jak i roadster z miękkim dachem. Obie wersje cieszyły się dużym zainteresowaniem, a ich wspólną cechą był charakter – sportowy, ale z klasą. Nie był to samochód brutalny jak amerykańskie muscle cary, lecz elegancki i precyzyjny, skonstruowany z myślą o europejskich drogach.</p>
+                    
+                    <p>Dziś Jaguar E-Type 3.8 z 1963 roku to nie tylko klasyk, ale także obiekt kolekcjonerski, którego wartość stale rośnie. Jego połączenie wyglądu, osiągów i historii sprawia, że jest jednym z najczęściej przywoływanych przykładów idealnego balansu między formą a funkcją. To samochód, który nie potrzebuje przesady, by imponować.</p>
+                `;
+            } else if (title === 'Chevrolet Bel Air 1955') {
+                postContent.innerHTML = `
+                    <p>Chevrolet Bel Air z 1955 roku to samochód, który na zawsze odmienił wizerunek amerykańskiej motoryzacji. Był nie tylko nowym modelem – był początkiem nowej ery dla General Motors. W momencie debiutu Bel Air '55 przyciągał uwagę odważnym, nowoczesnym wyglądem, nową konstrukcją i pierwszym w historii Chevroleta silnikiem V8, który zapewnił mu miejsce w panteonie klasyków. To auto stało się symbolem optymizmu powojennej Ameryki, w której droga, chrom i wolność znaczyły więcej niż kiedykolwiek wcześniej.</p>
+                    
+                    <p>Stylistycznie Chevrolet Bel Air z 1955 roku był radykalną zmianą względem swoich poprzedników. Zamiast ciężkiego, masywnego nadwozia otrzymał lekką, nowoczesną sylwetkę o wyraźnych liniach i proporcjach, które od razu przyciągały wzrok. Przód zdobił szeroki, chromowany grill z charakterystyczną poziomą belką i centralnym emblematem Chevroleta. Reflektory umieszczono wysoko, a maska miała delikatne przetłoczenia, które nadawały autu dynamiki. Tylna część nadwozia z lekko zarysowanymi płetwami była zapowiedzią stylu, który zdominuje kolejne lata. Dwukolorowe malowania, bogate w kontrasty – na przykład niebiesko-białe czy czerwono-kremowe – podkreślały elegancję i lekkość projektu. W tamtym czasie Bel Air był symbolem klasy średniej, która zaczynała marzyć o luksusie i designie z wyższej półki.</p>
+                    
+                    <p>Wnętrze samochodu było równie nowoczesne jak jego karoseria. Chevrolet postawił na styl i komfort, które wcześniej kojarzyły się głównie z droższymi markami. Deska rozdzielcza miała opływowe kształty i duże, czytelne zegary. Kierownica z cienkim wieńcem i metalowym środkiem wyglądała lekko, a zestaw chromowanych detali dodawał całości prestiżu. Fotele były szerokie i miękkie, przystosowane do długich podróży, a zastosowanie żywych kolorów tapicerki – od czerwieni po turkus – idealnie wpisywało się w estetykę lat pięćdziesiątych. Bel Air nie był sportowym autem, ale oferował wyjątkowy komfort i przestrzeń, co czyniło go idealnym wyborem dla rodzin i kierowców ceniących elegancką codzienność.</p>
+                    
+                    <p>Pod maską Chevroleta Bel Air z 1955 roku znajdowało się serce, które zdefiniowało nową generację samochodów marki – silnik V8 o pojemności 4,3 litra, znany jako "small-block". Generował on moc od 162 do 180 koni mechanicznych, w zależności od wersji, i był połączony z trzybiegową skrzynią manualną lub automatyczną Powerglide. Dzięki tej jednostce Bel Air zyskał zupełnie nowe oblicze – dynamiczne, elastyczne i przyjemne w prowadzeniu. Samochód przyspieszał do 100 km/h w około 11 sekund, co jak na połowę lat 50. było wynikiem bardzo dobrym. Silnik V8 charakteryzował się nie tylko mocą, ale i niezawodnością, dzięki czemu szybko stał się legendą wśród mechaników i kierowców.</p>
+                    
+                    <p>Nowy układ ramy, niezależne zawieszenie przednie i udoskonalony system hamulcowy sprawiały, że Bel Air prowadził się lepiej niż większość amerykańskich samochodów z tamtego okresu. Jazda była płynna i stabilna, a wnętrze dobrze wyciszone, co czyniło go samochodem idealnym zarówno do miasta, jak i na długie trasy. Chevrolet trafił w sedno – stworzył auto, które wyglądało luksusowo, jeździło pewnie i pozostawało przystępne cenowo.</p>
+                    
+                    <p>Bel Air z 1955 roku szybko stał się ikoną popkultury. Występował w filmach, na plakatach i w reklamach, symbolizując styl życia Ameryki lat pięćdziesiątych – epokę jukeboxów, drive-inów i wolności na szerokich drogach. Wersje coupe i kabriolet cieszyły się ogromnym zainteresowaniem, a charakterystyczny błysk chromu i dwukolorowe lakierowanie uczyniły z Bel Aira motoryzacyjny znak rozpoznawczy swojej epoki. Wraz z modelami z 1956 i 1957 roku stworzył tak zwaną „Tri-Five Chevy Trilogy", czyli trzyletnią serię, którą do dziś uważa się za złoty okres dla marki Chevrolet.</p>
+                `;
+            } else if (title === 'Porsche 911 Carrera 1973' || title === 'Dodge Charger R/T 1969' || title === 'Alfa Romeo Spider 1966') {
+                postContent.innerHTML = '<p class="text-center italic">Treść wkrótce...</p>';
+            } else {
+                postContent.innerHTML = '<p class="text-center italic">Treść wkrótce...</p>';
+            }
+            
+            showSection('post');
+        }
+
+        // Initialize with wpisy section
+        loadGameData();
+        showSection('wpisy');
+        updateCoinDisplay();
+        updatePostsDisplay();
+        updateShopDisplay();
+        updateMissionProgress();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e8c9d9e7aff9bf',t:'MTc2MDQ2Mjg1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

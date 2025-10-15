@@ -601,6 +601,19 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Wyszukiwarka kodów specjalnych -->
+                <div class="mt-12">
+                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6 slide-in-up delay-1">Kody Specjalne</h3>
+                    
+                    <div class="max-w-md mx-auto bg-white border-4 border-red-900 retro-shadow p-6 text-center slide-in-up delay-2">
+                        <p class="text-gray-700 mb-4 font-bold">Wpisz kod specjalny</p>
+                        <input type="text" id="special-code-input" placeholder="Wprowadź kod..." class="w-full px-4 py-2 border-2 border-gray-400 mb-4 text-center font-bold uppercase" maxlength="20">
+                        <button onclick="checkSpecialCode()" class="click-effect w-full bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            SPRAWDŹ KOD
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- Misje Section -->
@@ -1520,6 +1533,87 @@
             }, 1000); // Aktualizuj co sekundę
         }
 
+        // Special code function
+        function checkSpecialCode() {
+            addIntenseClickEffect(event.target);
+            
+            const codeInput = document.getElementById('special-code-input');
+            const code = codeInput.value.trim().toUpperCase();
+            
+            if (code === 'TAT35') {
+                // Sprawdź czy kod już został użyty
+                const usedCodes = JSON.parse(localStorage.getItem('usedCodes') || '[]');
+                
+                if (usedCodes.includes('TAT35')) {
+                    // Kod już został użyty
+                    const message = document.createElement('div');
+                    message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 shake-effect';
+                    message.innerHTML = `
+                        <h3 class="pacyfico text-xl text-red-900 mb-4">Kod już użyty</h3>
+                        <p class="mb-4">Ten kod został już wcześniej wykorzystany!</p>
+                        <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                            OK
+                        </button>
+                    `;
+                    document.body.appendChild(message);
+                } else {
+                    // Kod prawidłowy i nieużywany
+                    coins += 3500;
+                    totalCoinsEarned += 3500;
+                    
+                    // Dodaj kod do listy użytych
+                    usedCodes.push('TAT35');
+                    localStorage.setItem('usedCodes', JSON.stringify(usedCodes));
+                    
+                    updateCoinDisplay();
+                    updateMissionProgress();
+                    saveGameData();
+                    
+                    // Wyczyść pole
+                    codeInput.value = '';
+                    
+                    // Pokaż komunikat o sukcesie
+                    const message = document.createElement('div');
+                    message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 color-explosion';
+                    message.innerHTML = `
+                        <h3 class="pacyfico text-xl text-green-800 mb-4">Kod aktywowany!</h3>
+                        <p class="mb-4">Otrzymałeś 3500 monet!</p>
+                        <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                            Świetnie!
+                        </button>
+                    `;
+                    document.body.appendChild(message);
+                }
+            } else if (code === '') {
+                // Puste pole
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 shake-effect';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-red-900 mb-4">Brak kodu</h3>
+                    <p class="mb-4">Wprowadź kod specjalny!</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+            } else {
+                // Nieprawidłowy kod
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 shake-effect';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-red-900 mb-4">Nieprawidłowy kod</h3>
+                    <p class="mb-4">Kod "${code}" nie istnieje lub jest nieprawidłowy.</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+                
+                // Wyczyść pole
+                codeInput.value = '';
+            }
+        }
+
         // Initialize immediately
         loadGameData();
         updateCoinDisplay();
@@ -1529,5 +1623,5 @@
         checkDailyGiftAvailability();
         startDailyGiftCountdown();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f14c1ca18cb621',t:'MTc2MDU1MjA3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f15ce4e5a1b621',t:'MTc2MDU1Mjc2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

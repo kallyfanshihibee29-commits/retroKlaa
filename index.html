@@ -483,19 +483,28 @@
         // Load saved data
         function loadGameData() {
             const savedData = localStorage.getItem('retroBlogData');
+            const allShopPosts = ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967'];
+            
             if (savedData) {
                 const data = JSON.parse(savedData);
                 coins = data.coins || 0;
                 credits = data.credits || 0;
                 ownedPosts = data.ownedPosts || [];
                 readPosts = data.readPosts || [];
-                availableShopPosts = data.availableShopPosts || ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967'];
+                
+                // Fix shop posts - add new cars that aren't owned yet
+                const savedAvailableShopPosts = data.availableShopPosts || [];
+                availableShopPosts = allShopPosts.filter(post => !ownedPosts.includes(post));
+                
                 readingStage = data.readingStage || 1;
                 readingProgress = data.readingProgress || 0;
                 buyingStage = data.buyingStage || 1;
                 buyingProgress = data.buyingProgress || 0;
                 collectingStage = data.collectingStage || 1;
                 totalCoinsEarned = data.totalCoinsEarned || 0;
+            } else {
+                // First time - all cars available
+                availableShopPosts = allShopPosts;
             }
         }
 
@@ -912,5 +921,5 @@
         updateShopDisplay();
         updateMissionProgress();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef1e32332274b7',t:'MTc2MDUyOTIyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef56346461b621',t:'MTc2MDUzMTUyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

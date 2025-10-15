@@ -24,6 +24,175 @@
         .card-hover:hover {
             transform: translateY(-2px);
         }
+        
+        /* Animacje wysuwania z boku */
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        
+        .slide-in-up {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Opóźnienia dla efektu kaskadowego */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        
+        /* Intensywne efekty kliknięcia */
+        .click-effect {
+            transition: all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .click-effect:active {
+            transform: scale(0.85) translateY(5px) rotateX(10deg);
+            box-shadow: 0px 0px 0px #8b4513;
+            filter: brightness(1.3) saturate(1.5);
+        }
+        
+        .nav-button {
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+        
+        .nav-button:active {
+            transform: translateY(5px) scale(0.9) rotateZ(2deg);
+            box-shadow: 0px 0px 0px #8b4513;
+            filter: brightness(1.4) hue-rotate(15deg);
+        }
+        
+        /* Efekt pulsowania przy kliknięciu */
+        .pulse-effect {
+            animation: pulseClick 0.3s ease-out;
+        }
+        
+        @keyframes pulseClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(139, 69, 19, 0.6); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Efekt błysku */
+        .flash-effect {
+            position: relative;
+        }
+        
+        .flash-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .flash-effect.flashing::before {
+            left: 100%;
+        }
+        
+        /* Efekt trzęsienia */
+        .shake-effect {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-3px) rotateZ(-1deg); }
+            20%, 40%, 60%, 80% { transform: translateX(3px) rotateZ(1deg); }
+        }
+        
+        /* Efekt odbicia */
+        .bounce-effect {
+            animation: bounceClick 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes bounceClick {
+            0% { transform: scale(1) translateY(0); }
+            30% { transform: scale(0.8) translateY(8px); }
+            60% { transform: scale(1.1) translateY(-4px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+        
+        /* Efekt eksplozji kolorów */
+        .color-explosion {
+            animation: colorExplode 0.4s ease-out;
+        }
+        
+        @keyframes colorExplode {
+            0% { filter: hue-rotate(0deg) saturate(1) brightness(1); }
+            25% { filter: hue-rotate(90deg) saturate(2) brightness(1.5); }
+            50% { filter: hue-rotate(180deg) saturate(3) brightness(2); }
+            75% { filter: hue-rotate(270deg) saturate(2) brightness(1.5); }
+            100% { filter: hue-rotate(360deg) saturate(1) brightness(1); }
+        }
+        
+        /* Animacje dla losowania prezentów */
+        .lottery-spinning {
+            animation: lotterySpinSimple 0.1s infinite;
+        }
+        
+        @keyframes lotterySpinSimple {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .lottery-result {
+            animation: lotteryReveal 0.8s ease-out;
+        }
+        
+        @keyframes lotteryReveal {
+            0% { transform: scale(0) rotateZ(180deg); opacity: 0; }
+            50% { transform: scale(1.2) rotateZ(0deg); opacity: 1; }
+            100% { transform: scale(1) rotateZ(0deg); opacity: 1; }
+        }
+        
+        .countdown-timer {
+            animation: countdownPulse 2s infinite;
+        }
+        
+        @keyframes countdownPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
     </style>
 </head>
 <body class="min-h-full" style="background-color: #f5f5dc;">
@@ -51,19 +220,19 @@
                         <span class="text-blue-800">Kredytów</span>
                     </div>
                 </div>
-                <h1 class="pacyfico text-5xl md:text-6xl text-red-900 text-center mb-8">
+                <h1 class="pacyfico text-5xl md:text-6xl text-red-900 text-center mb-8 slide-in-up delay-1">
                     Klasyka
                 </h1>
                 
                 <!-- Navigation -->
                 <nav class="flex flex-wrap justify-center gap-4">
-                    <button onclick="showSection('wpisy')" id="btn-wpisy" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200">
+                    <button onclick="showSection('wpisy')" id="btn-wpisy" class="nav-button bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200 slide-in-left delay-2">
                         Wpisy
                     </button>
-                    <button onclick="showSection('sklep')" id="btn-sklep" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200">
+                    <button onclick="showSection('sklep')" id="btn-sklep" class="nav-button bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200 slide-in-up delay-3">
                         Sklep
                     </button>
-                    <button onclick="showSection('misje')" id="btn-misje" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200">
+                    <button onclick="showSection('misje')" id="btn-misje" class="nav-button bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200 slide-in-right delay-4">
                         Misje
                     </button>
                 </nav>
@@ -78,7 +247,7 @@
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Wpis 1 -->
-                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-left delay-1">
                         <div class="bg-red-900 p-4">
                             <h3 class="pacyfico text-xl text-white text-center">Ford Mustang Fastback '67</h3>
                         </div>
@@ -86,14 +255,14 @@
                             <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
                                 <img src="zdjęcie_1.png" alt="Ford Mustang Fastback '67" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_1.png</span>';">
                             </div>
-                            <button onclick="openPost('Ford Mustang Fastback \'67')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            <button onclick="openPost('Ford Mustang Fastback \'67')" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                 Czytaj
                             </button>
                         </div>
                     </div>
 
                     <!-- Wpis 2 -->
-                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-up delay-2">
                         <div class="bg-red-900 p-4">
                             <h3 class="pacyfico text-xl text-white text-center">Jaguar E-Type 1963</h3>
                         </div>
@@ -101,14 +270,14 @@
                             <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
                                 <img src="zdjęcie_2.png" alt="Jaguar E-Type 1963" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_2.png</span>';">
                             </div>
-                            <button onclick="openPost('Jaguar E-Type 1963')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            <button onclick="openPost('Jaguar E-Type 1963')" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                 Czytaj
                             </button>
                         </div>
                     </div>
 
                     <!-- Wpis 3 -->
-                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                    <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-right delay-3">
                         <div class="bg-red-900 p-4">
                             <h3 class="pacyfico text-xl text-white text-center">Chevrolet Bel Air 1955</h3>
                         </div>
@@ -116,7 +285,7 @@
                             <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
                                 <img src="zdjęcie_3.png" alt="Chevrolet Bel Air 1955" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_3.png</span>';">
                             </div>
-                            <button onclick="openPost('Chevrolet Bel Air 1955')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            <button onclick="openPost('Chevrolet Bel Air 1955')" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                 Czytaj
                             </button>
                         </div>
@@ -126,14 +295,27 @@
 
             <!-- Sklep Section -->
             <div id="sklep-section" class="section hidden">
-                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8">Sklep</h2>
+                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8 slide-in-up delay-1">Sklep</h2>
+                
+                <!-- Codzienny Darmowy Prezent -->
+                <div class="mb-12">
+                    <div class="max-w-md mx-auto bg-red-900 border-4 border-red-700 retro-shadow p-6 text-center slide-in-up delay-2">
+                        <h3 class="pacyfico text-2xl text-white mb-4">Codzienny Prezent!</h3>
+                        <div id="daily-gift-content">
+                            <p class="text-white font-bold mb-4">Odbierz swój darmowy prezent!</p>
+                            <button id="claim-daily-gift" onclick="startDailyGiftLottery()" class="click-effect bg-green-800 hover:bg-green-700 text-white font-bold py-3 px-6 retro-shadow transition-all duration-200 text-lg">
+                                LOSUJ PREZENT!
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Dodatkowe Wpisy -->
                 <div class="mb-12">
-                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6">Dodatkowe Wpisy</h3>
+                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6 slide-in-up delay-2">Dodatkowe Wpisy</h3>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                         <!-- 1. Porsche 911 Carrera 1973 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-left delay-3">
                             <!-- Nakładka przeceny -->
                             <div class="absolute -top-2 -right-2 bg-red-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
                                 PRZECENA!
@@ -154,14 +336,14 @@
                                     <span class="font-bold text-red-600 line-through text-sm">500</span>
                                     <span class="font-bold text-green-600 text-lg">300</span>
                                 </div>
-                                <button onclick="buyPost('Porsche 911 Carrera 1973', 300)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                <button onclick="buyPost('Porsche 911 Carrera 1973', 300)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                     Kup
                                 </button>
                             </div>
                         </div>
 
                         <!-- 2. Dodge Charger R/T 1969 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-up delay-4">
                             <div class="bg-red-900 p-4">
                                 <h4 class="pacyfico text-lg text-white text-center">Dodge Charger R/T 1969</h4>
                             </div>
@@ -177,14 +359,14 @@
                                     </svg>
                                     <span class="font-bold text-gray-700">500</span>
                                 </div>
-                                <button onclick="buyPost('Dodge Charger R/T 1969', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                <button onclick="buyPost('Dodge Charger R/T 1969', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                     Kup
                                 </button>
                             </div>
                         </div>
 
                         <!-- 3. Alfa Romeo Spider 1966 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-right delay-5">
                             <div class="bg-red-900 p-4">
                                 <h4 class="pacyfico text-lg text-white text-center">Alfa Romeo Spider 1966</h4>
                             </div>
@@ -200,14 +382,14 @@
                                     </svg>
                                     <span class="font-bold text-gray-700">500</span>
                                 </div>
-                                <button onclick="buyPost('Alfa Romeo Spider 1966', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                <button onclick="buyPost('Alfa Romeo Spider 1966', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                     Kup
                                 </button>
                             </div>
                         </div>
 
                         <!-- 4. Mercedes-Benz 300SL Gullwing 1955 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-left delay-6">
                             <div class="bg-red-900 p-4">
                                 <h4 class="pacyfico text-lg text-white text-center">Mercedes-Benz 300SL Gullwing 1955</h4>
                             </div>
@@ -223,14 +405,14 @@
                                     </svg>
                                     <span class="font-bold text-gray-700">500</span>
                                 </div>
-                                <button onclick="buyPost('Mercedes-Benz 300SL Gullwing 1955', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                <button onclick="buyPost('Mercedes-Benz 300SL Gullwing 1955', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                     Kup
                                 </button>
                             </div>
                         </div>
 
                         <!-- 5. Toyota 2000GT 1967 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-up delay-1">
                             <!-- Nakładka przeceny -->
                             <div class="absolute -top-2 -right-2 bg-red-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
                                 PRZECENA!
@@ -251,14 +433,14 @@
                                     <span class="font-bold text-red-600 line-through text-sm">500</span>
                                     <span class="font-bold text-green-600 text-lg">300</span>
                                 </div>
-                                <button onclick="buyPost('Toyota 2000GT 1967', 300)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                <button onclick="buyPost('Toyota 2000GT 1967', 300)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                                     Kup
                                 </button>
                             </div>
                         </div>
 
                         <!-- 6. Pontiac GTO 1967 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-right delay-2">
                             <div class="bg-red-900 p-4">
                                 <h4 class="pacyfico text-lg text-white text-center">Pontiac GTO 1967</h4>
                             </div>
@@ -281,7 +463,7 @@
                         </div>
 
                         <!-- 7. Fiat 125p -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-left delay-3">
                             <!-- Nakładka NOWE -->
                             <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
                                 NOWE!
@@ -308,7 +490,7 @@
                         </div>
 
                         <!-- 8. Lancia Delta -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-up delay-4">
                             <!-- Nakładka NOWE -->
                             <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
                                 NOWE!
@@ -335,7 +517,7 @@
                         </div>
 
                         <!-- 9. Nysa 522 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative">
+                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-right delay-5">
                             <!-- Nakładka NOWE -->
                             <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
                                 NOWE!
@@ -367,11 +549,11 @@
 
                 <!-- Oferty Monetek -->
                 <div>
-                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6">Oferty Monetek</h3>
+                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6 slide-in-up delay-6">Oferty Monetek</h3>
                     
                     <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                         <!-- 500 Monet -->
-                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center">
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center slide-in-left delay-1">
                             <div class="flex items-center justify-center gap-2 mb-4">
                                 <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
                                     <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
@@ -387,7 +569,7 @@
                         </div>
 
                         <!-- 1000 Monet -->
-                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center">
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center slide-in-up delay-2">
                             <div class="flex items-center justify-center gap-2 mb-4">
                                 <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
                                     <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
@@ -403,7 +585,7 @@
                         </div>
 
                         <!-- 1500 Monet -->
-                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center">
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center slide-in-right delay-3">
                             <div class="flex items-center justify-center gap-2 mb-4">
                                 <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
                                     <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
@@ -423,11 +605,11 @@
 
             <!-- Misje Section -->
             <div id="misje-section" class="section hidden">
-                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8">Misje</h2>
+                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8 slide-in-up delay-1">Misje</h2>
                 
                 <div class="max-w-4xl mx-auto space-y-6">
                     <!-- Misja 1: Czytanie wpisów -->
-                    <div class="bg-white border-4 border-red-900 retro-shadow p-6">
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6 slide-in-left delay-2">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="pacyfico text-xl text-red-900">Misja Czytelnika</h3>
                             <div class="flex items-center gap-4">
@@ -462,7 +644,7 @@
                     </div>
 
                     <!-- Misja 2: Kupowanie wpisów -->
-                    <div class="bg-white border-4 border-red-900 retro-shadow p-6">
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6 slide-in-right delay-3">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="pacyfico text-xl text-red-900">Misja Kolekcjonera</h3>
                             <div class="flex items-center gap-4">
@@ -497,7 +679,7 @@
                     </div>
 
                     <!-- Misja 3: Zbieranie monet -->
-                    <div class="bg-white border-4 border-red-900 retro-shadow p-6">
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6 slide-in-left delay-4">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="pacyfico text-xl text-red-900">Misja Zbieracza</h3>
                             <div class="flex items-center gap-4">
@@ -572,25 +754,49 @@
         let buyingProgress = 0;
         let collectingStage = 1;
         let totalCoinsEarned = 0;
+        
+        // Daily gift system
+        let lastDailyGiftTime = 0;
+        let dailyGiftAvailable = true;
 
         // Load saved data
         function loadGameData() {
-            // Reset to initial state - clear all saved data
-            localStorage.removeItem('retroBlogData');
-            
-            // Set initial values
-            coins = 0;
-            credits = 0;
-            ownedPosts = [];
-            readPosts = [];
-            availableShopPosts = ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967', 'Fiat 125p', 'Lancia Delta', 'Nysa 522'];
-            
-            readingStage = 1;
-            readingProgress = 0;
-            buyingStage = 1;
-            buyingProgress = 0;
-            collectingStage = 1;
-            totalCoinsEarned = 0;
+            const saved = localStorage.getItem('retroBlogData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                coins = data.coins || 0;
+                credits = data.credits || 0;
+                ownedPosts = data.ownedPosts || [];
+                readPosts = data.readPosts || [];
+                availableShopPosts = data.availableShopPosts || ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967', 'Fiat 125p', 'Lancia Delta', 'Nysa 522'];
+                
+                readingStage = data.readingStage || 1;
+                readingProgress = data.readingProgress || 0;
+                buyingStage = data.buyingStage || 1;
+                buyingProgress = data.buyingProgress || 0;
+                collectingStage = data.collectingStage || 1;
+                totalCoinsEarned = data.totalCoinsEarned || 0;
+                
+                lastDailyGiftTime = data.lastDailyGiftTime || 0;
+                dailyGiftAvailable = data.dailyGiftAvailable !== undefined ? data.dailyGiftAvailable : true;
+            } else {
+                // Set initial values only if no saved data exists
+                coins = 0;
+                credits = 0;
+                ownedPosts = [];
+                readPosts = [];
+                availableShopPosts = ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967', 'Fiat 125p', 'Lancia Delta', 'Nysa 522'];
+                
+                readingStage = 1;
+                readingProgress = 0;
+                buyingStage = 1;
+                buyingProgress = 0;
+                collectingStage = 1;
+                totalCoinsEarned = 0;
+                
+                lastDailyGiftTime = 0;
+                dailyGiftAvailable = true;
+            }
         }
 
         // Save game data
@@ -606,7 +812,9 @@
                 buyingStage,
                 buyingProgress,
                 collectingStage,
-                totalCoinsEarned
+                totalCoinsEarned,
+                lastDailyGiftTime,
+                dailyGiftAvailable
             };
             localStorage.setItem('retroBlogData', JSON.stringify(data));
         }
@@ -616,17 +824,39 @@
             document.getElementById('credit-count').textContent = credits;
         }
 
+        // Funkcje intensywnych efektów
+        function addIntenseClickEffect(element) {
+            // Losowy wybór efektu
+            const effects = ['pulse-effect', 'bounce-effect', 'shake-effect', 'color-explosion', 'flash-effect'];
+            const randomEffect = effects[Math.floor(Math.random() * effects.length)];
+            
+            element.classList.add(randomEffect);
+            
+            if (randomEffect === 'flash-effect') {
+                element.classList.add('flashing');
+                setTimeout(() => element.classList.remove('flashing'), 500);
+            }
+            
+            setTimeout(() => {
+                element.classList.remove(randomEffect);
+            }, 600);
+        }
+
         function buyCoins(amount, price) {
+            // Dodaj efekt do klikniętego przycisku
+            event.target.classList.add('color-explosion');
+            setTimeout(() => event.target.classList.remove('color-explosion'), 400);
+            
             // Show payment message
             const message = document.createElement('div');
-            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50';
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 bounce-effect';
             message.innerHTML = `
                 <h3 class="pacyfico text-xl text-red-900 mb-4">Płatność</h3>
                 <p class="mb-4">Przekaż kwotę ${price} właścicielowi Bloga</p>
-                <button onclick="this.parentElement.remove(); coins += ${amount}; totalCoinsEarned += ${amount}; updateCoinDisplay(); updateMissionProgress(); saveGameData();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); coins += ${amount}; totalCoinsEarned += ${amount}; updateCoinDisplay(); updateMissionProgress(); saveGameData();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
                     Potwierdzam płatność
                 </button>
-                <button onclick="this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow ml-2">
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow ml-2 click-effect">
                     Anuluj
                 </button>
             `;
@@ -634,6 +864,9 @@
         }
 
         function buyPost(postTitle, cost) {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
             if (coins >= cost) {
                 coins -= cost;
                 ownedPosts.push(postTitle);
@@ -652,11 +885,11 @@
                 
                 // Show success message
                 const message = document.createElement('div');
-                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 pulse-effect';
                 message.innerHTML = `
                     <h3 class="pacyfico text-xl text-green-800 mb-4">Sukces!</h3>
                     <p class="mb-4">Wpis "${postTitle}" został dodany do Twoich wpisów!</p>
-                    <button onclick="this.parentElement.remove(); showSection('wpisy');" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); showSection('wpisy');" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
                         Przejdź do wpisów
                     </button>
                 `;
@@ -664,11 +897,11 @@
             } else {
                 // Show insufficient funds message
                 const message = document.createElement('div');
-                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50';
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 shake-effect';
                 message.innerHTML = `
                     <h3 class="pacyfico text-xl text-red-900 mb-4">Brak środków</h3>
                     <p class="mb-4">Potrzebujesz ${cost} monet, a masz tylko ${coins}.</p>
-                    <button onclick="this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow">
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow click-effect">
                         OK
                     </button>
                 `;
@@ -755,6 +988,11 @@
         }
 
         function showSection(sectionName) {
+            // Dodaj efekt do klikniętego przycisku nawigacji
+            if (event && event.target) {
+                addIntenseClickEffect(event.target);
+            }
+            
             // Hide all sections
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
@@ -841,6 +1079,9 @@
         }
 
         function claimReadingReward() {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
             const readingTarget = 3;
             if (readingProgress >= readingTarget) {
                 const coinReward = 100;
@@ -858,12 +1099,12 @@
                 
                 // Show reward message
                 const message = document.createElement('div');
-                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 color-explosion';
                 message.innerHTML = `
                     <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
                     <p class="mb-4">Otrzymałeś ${coinReward} monet i ${creditReward} kredytów!</p>
                     <p class="mb-4">Następny etap: Przeczytaj 3 wpisy</p>
-                    <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
                         OK
                     </button>
                 `;
@@ -872,6 +1113,9 @@
         }
 
         function claimBuyingReward() {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
             if (buyingProgress >= 1) {
                 const coinReward = 30;
                 const creditReward = 500;
@@ -888,12 +1132,12 @@
                 
                 // Show reward message
                 const message = document.createElement('div');
-                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 bounce-effect';
                 message.innerHTML = `
                     <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
                     <p class="mb-4">Otrzymałeś ${coinReward} monet i ${creditReward} kredytów!</p>
                     <p class="mb-4">Następny etap: Kup 1 wpis ze sklepu</p>
-                    <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
                         OK
                     </button>
                 `;
@@ -902,6 +1146,9 @@
         }
 
         function claimCollectingReward() {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
             const collectingTarget = collectingStage * 500;
             if (totalCoinsEarned >= collectingTarget) {
                 const coinReward = 100;
@@ -920,12 +1167,12 @@
                 
                 // Show reward message
                 const message = document.createElement('div');
-                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50';
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 flash-effect flashing';
                 message.innerHTML = `
                     <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
                     <p class="mb-4">Otrzymałeś ${coinReward} monet i ${creditReward} kredytów!</p>
                     <p class="mb-4">Następny etap: Uzbieraj łącznie ${nextTarget} monet</p>
-                    <button onclick="this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow">
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
                         OK
                     </button>
                 `;
@@ -934,6 +1181,9 @@
         }
 
         function openPost(title) {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
             // Mark as read if not already read
             if (!readPosts.includes(title)) {
                 readPosts.push(title);
@@ -946,7 +1196,7 @@
                 const button = document.getElementById(buttonId);
                 if (button) {
                     button.textContent = 'Przeczytano';
-                    button.className = 'w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200';
+                    button.className = 'w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200 click-effect';
                 }
             }
             
@@ -1122,15 +1372,162 @@
             updatePostsDisplay();
             updateShopDisplay();
             updateMissionProgress();
+            checkDailyGiftAvailability();
+            startDailyGiftCountdown();
             showSection('wpisy');
         });
         
+        // Daily gift functions
+        function checkDailyGiftAvailability() {
+            const now = Date.now();
+            const timeDiff = now - lastDailyGiftTime;
+            const twentyFourHours = 24 * 60 * 60 * 1000; // 24 godziny w milisekundach
+            
+            if (timeDiff >= twentyFourHours) {
+                dailyGiftAvailable = true;
+            } else {
+                dailyGiftAvailable = false;
+            }
+            
+            updateDailyGiftDisplay();
+        }
+        
+        function updateDailyGiftDisplay() {
+            const content = document.getElementById('daily-gift-content');
+            
+            if (dailyGiftAvailable) {
+                content.innerHTML = `
+                    <p class="text-white font-bold mb-4">Odbierz swój darmowy prezent!</p>
+                    <button id="claim-daily-gift" onclick="startDailyGiftLottery()" class="click-effect bg-green-800 hover:bg-green-700 text-white font-bold py-3 px-6 retro-shadow transition-all duration-200 text-lg">
+                        LOSUJ PREZENT!
+                    </button>
+                `;
+            } else {
+                const now = Date.now();
+                const timeDiff = now - lastDailyGiftTime;
+                const twentyFourHours = 24 * 60 * 60 * 1000;
+                const timeLeft = twentyFourHours - timeDiff;
+                
+                const hours = Math.floor(timeLeft / (60 * 60 * 1000));
+                const minutes = Math.floor((timeLeft % (60 * 60 * 1000)) / (60 * 1000));
+                const seconds = Math.floor((timeLeft % (60 * 1000)) / 1000);
+                
+                content.innerHTML = `
+                    <p class="text-white font-bold mb-4">Następny prezent za:</p>
+                    <div class="countdown-timer bg-red-700 border-2 border-white text-white px-4 py-2 font-bold text-xl">
+                        ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}
+                    </div>
+                `;
+            }
+        }
+        
+        function startDailyGiftLottery() {
+            addIntenseClickEffect(event.target);
+            
+            const prizes = [
+                { type: 'coins', amount: 100, text: '100 MONET' },
+                { type: 'coins', amount: 200, text: '200 MONET' },
+                { type: 'coins', amount: 300, text: '300 MONET' },
+                { type: 'credits', amount: 200, text: '200 KREDYTÓW' },
+                { type: 'credits', amount: 500, text: '500 KREDYTÓW' },
+                { type: 'credits', amount: 800, text: '800 KREDYTÓW' }
+            ];
+            
+            const content = document.getElementById('daily-gift-content');
+            
+            // Rozpocznij animację losowania
+            content.innerHTML = `
+                <p class="text-white font-bold mb-4">LOSOWANIE...</p>
+                <div id="lottery-display" class="lottery-spinning bg-red-700 border-2 border-white text-white px-4 py-2 font-bold text-lg mb-4">
+                    ???
+                </div>
+                <p class="text-white text-sm">Czekaj...</p>
+            `;
+            
+            const lotteryDisplay = document.getElementById('lottery-display');
+            let currentIndex = 0;
+            
+            // Szybkie przelatywanie przez 4 sekundy
+            const interval = setInterval(() => {
+                const prize = prizes[currentIndex % prizes.length];
+                lotteryDisplay.textContent = prize.text;
+                currentIndex++;
+            }, 80);
+            
+            // Po 4 sekundach pokaż wynik
+            setTimeout(() => {
+                clearInterval(interval);
+                
+                // Losuj nagrodę
+                const finalPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                
+                lotteryDisplay.className = 'lottery-result bg-red-700 border-2 border-white text-white px-4 py-2 font-bold text-lg mb-4';
+                lotteryDisplay.textContent = finalPrize.text;
+                
+                content.innerHTML = `
+                    <p class="text-white font-bold mb-4">WYGRAŁEŚ!</p>
+                    <div class="lottery-result bg-red-700 border-2 border-white text-white px-4 py-2 font-bold text-lg mb-4">
+                        ${finalPrize.text}
+                    </div>
+                    <button onclick="claimDailyGiftReward('${finalPrize.type}', ${finalPrize.amount})" class="click-effect bg-green-800 hover:bg-green-700 text-white font-bold py-3 px-6 retro-shadow transition-all duration-200 text-lg">
+                        ODBIERZ NAGRODĘ!
+                    </button>
+                `;
+            }, 4000);
+        }
+        
+        function claimDailyGiftReward(type, amount) {
+            addIntenseClickEffect(event.target);
+            
+            if (type === 'coins') {
+                coins += amount;
+                totalCoinsEarned += amount;
+            } else if (type === 'credits') {
+                credits += amount;
+            }
+            
+            // Ustaw czas ostatniego odebrania prezentu
+            lastDailyGiftTime = Date.now();
+            dailyGiftAvailable = false;
+            
+            updateCoinDisplay();
+            updateMissionProgress();
+            updateDailyGiftDisplay();
+            saveGameData();
+            
+            // Pokaż komunikat o sukcesie
+            const message = document.createElement('div');
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 color-explosion';
+            message.innerHTML = `
+                <h3 class="pacyfico text-xl text-green-800 mb-4">Prezent odebrany!</h3>
+                <p class="mb-4">Otrzymałeś ${amount} ${type === 'coins' ? 'monet' : 'kredytów'}!</p>
+                <p class="mb-4 text-sm">Następny prezent będzie dostępny za 24 godziny.</p>
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                    Świetnie!
+                </button>
+            `;
+            document.body.appendChild(message);
+            
+            // Uruchom timer odliczania
+            startDailyGiftCountdown();
+        }
+        
+        function startDailyGiftCountdown() {
+            setInterval(() => {
+                if (!dailyGiftAvailable) {
+                    checkDailyGiftAvailability();
+                }
+            }, 1000); // Aktualizuj co sekundę
+        }
+
         // Initialize immediately
         loadGameData();
         updateCoinDisplay();
         updatePostsDisplay();
         updateShopDisplay();
         updateMissionProgress();
+        checkDailyGiftAvailability();
+        startDailyGiftCountdown();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98effd4540a3bf3f',t:'MTc2MDUzODM2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f14c1ca18cb621',t:'MTc2MDU1MjA3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

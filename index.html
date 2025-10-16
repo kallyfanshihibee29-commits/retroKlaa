@@ -352,289 +352,334 @@
                 <!-- Dodatkowe Wpisy -->
                 <div class="mb-12">
                     <h3 class="pacyfico text-2xl text-red-900 text-center mb-6 slide-in-up delay-2">Dodatkowe Wpisy</h3>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                        <!-- 1. Porsche 911 Carrera 1973 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-left delay-3">
-                            <!-- Nakładka przeceny -->
-                            <div class="absolute -top-2 -right-2 bg-red-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
-                                PRZECENA!
-                            </div>
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Porsche 911 Carrera 1973</h4>
-                            </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_4.png" alt="Porsche 911 Carrera 1973" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_4.png</span>';">
+                    <div class="overflow-x-auto pb-4 mb-8">
+                        <div class="flex gap-4 min-w-max px-4">
+                            <!-- 1. Porsche 911 Carrera 1973 -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative flex-shrink-0 w-64 slide-in-left delay-3">
+                                <!-- Nakładka przeceny -->
+                                <div class="absolute -top-2 -right-2 bg-red-600 text-white px-2 py-1 rounded-full font-bold text-xs z-10 retro-shadow">
+                                    PRZECENA!
                                 </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-red-600 line-through text-sm">500</span>
-                                    <span class="font-bold text-green-600 text-lg">300</span>
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Porsche 911 Carrera 1973</h4>
                                 </div>
-                                <button onclick="buyPost('Porsche 911 Carrera 1973', 300)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_4.png" alt="Porsche 911 Carrera 1973" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_4.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-red-600 line-through text-xs">500</span>
+                                        <span class="font-bold text-green-600 text-sm">300</span>
+                                    </div>
+                                    <button onclick="buyPost('Porsche 911 Carrera 1973', 300)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 2. Dodge Charger R/T 1969 -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow flex-shrink-0 w-64 slide-in-up delay-4">
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Dodge Charger R/T 1969</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_5.png" alt="Dodge Charger R/T 1969" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_5.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-gray-700 text-sm">500</span>
+                                    </div>
+                                    <button onclick="buyPost('Dodge Charger R/T 1969', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 3. Alfa Romeo Spider 1966 -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow flex-shrink-0 w-64 slide-in-right delay-5">
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Alfa Romeo Spider 1966</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_6.png" alt="Alfa Romeo Spider 1966" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_6.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-gray-700 text-sm">500</span>
+                                    </div>
+                                    <button onclick="buyPost('Alfa Romeo Spider 1966', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 4. Mercedes-Benz 300SL Gullwing 1955 -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow flex-shrink-0 w-64 slide-in-left delay-6">
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Mercedes-Benz 300SL Gullwing 1955</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_7.png" alt="Mercedes-Benz 300SL Gullwing 1955" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_7.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-gray-700 text-sm">500</span>
+                                    </div>
+                                    <button onclick="buyPost('Mercedes-Benz 300SL Gullwing 1955', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 5. Toyota 2000GT 1967 -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative flex-shrink-0 w-64 slide-in-up delay-1">
+                                <!-- Nakładka przeceny -->
+                                <div class="absolute -top-2 -right-2 bg-red-600 text-white px-2 py-1 rounded-full font-bold text-xs z-10 retro-shadow">
+                                    PRZECENA!
+                                </div>
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Toyota 2000GT 1967</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_8.png" alt="Toyota 2000GT 1967" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_8.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-red-600 line-through text-xs">500</span>
+                                        <span class="font-bold text-green-600 text-sm">300</span>
+                                    </div>
+                                    <button onclick="buyPost('Toyota 2000GT 1967', 300)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 6. Pontiac GTO 1967 -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow flex-shrink-0 w-64 slide-in-right delay-2">
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Pontiac GTO 1967</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_9.png" alt="Pontiac GTO 1967" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_9.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-gray-700 text-sm">500</span>
+                                    </div>
+                                    <button onclick="buyPost('Pontiac GTO 1967', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 7. Fiat 125p -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative flex-shrink-0 w-64 slide-in-left delay-3">
+                                <!-- Nakładka NOWE -->
+                                <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-2 py-1 rounded-full font-bold text-xs z-10 retro-shadow">
+                                    NOWE!
+                                </div>
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Fiat 125p</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_10.png" alt="Fiat 125p" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_10.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-gray-700 text-sm">500</span>
+                                    </div>
+                                    <button onclick="buyPost('Fiat 125p', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 8. Lancia Delta -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative flex-shrink-0 w-64 slide-in-up delay-4">
+                                <!-- Nakładka NOWE -->
+                                <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-2 py-1 rounded-full font-bold text-xs z-10 retro-shadow">
+                                    NOWE!
+                                </div>
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Lancia Delta</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_11.png" alt="Lancia Delta" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_11.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-gray-700 text-sm">500</span>
+                                    </div>
+                                    <button onclick="buyPost('Lancia Delta', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 9. Nysa 522 -->
+                            <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative flex-shrink-0 w-64 slide-in-right delay-5">
+                                <!-- Nakładka NOWE -->
+                                <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-2 py-1 rounded-full font-bold text-xs z-10 retro-shadow">
+                                    NOWE!
+                                </div>
+                                <div class="bg-red-900 p-3">
+                                    <h4 class="pacyfico text-base text-white text-center">Nysa 522</h4>
+                                </div>
+                                <div class="p-3">
+                                    <div class="w-full h-24 bg-gray-200 mb-3 flex items-center justify-center border-2 border-gray-400">
+                                        <img src="zdjęcie_12.png" alt="Nysa 522" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-xs\'>zdjęcie_12.png</span>';">
+                                    </div>
+                                    <div class="flex items-center justify-center gap-1 mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" class="text-yellow-600">
+                                            <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
+                                            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
+                                        </svg>
+                                        <span class="font-bold text-gray-700 text-sm">500</span>
+                                    </div>
+                                    <button onclick="buyPost('Nysa 522', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
+                                        Kup
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- 2. Dodge Charger R/T 1969 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-up delay-4">
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Dodge Charger R/T 1969</h4>
+                <!-- Oferty Karnetu Retro -->
+                <div class="mb-12">
+                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6 slide-in-up delay-6">Karnet Retro</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
+                        <!-- Jeden poziom w górę -->
+                        <div class="bg-white border-4 border-green-800 retro-shadow p-6 text-center slide-in-left delay-1">
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-green-800">
+                                    <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#166534" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="6" fill="#22C55E"/>
+                                    <text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">+1</text>
+                                </svg>
+                                <span class="text-xl font-bold text-green-800">Poziom w górę</span>
                             </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_5.png" alt="Dodge Charger R/T 1969" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_5.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-gray-700">500</span>
-                                </div>
-                                <button onclick="buyPost('Dodge Charger R/T 1969', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
-                            </div>
+                            <p class="text-gray-600 mb-4">Kup jeden poziom w Karnecie Retro</p>
+                            <p class="text-xl font-bold text-red-900 mb-4">0,99 zł</p>
+                            <button onclick="buyPassLevel()" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                                Kup poziom
+                            </button>
                         </div>
 
-                        <!-- 3. Alfa Romeo Spider 1966 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-right delay-5">
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Alfa Romeo Spider 1966</h4>
+                        <!-- Wszystkie poziomy -->
+                        <div class="bg-white border-4 border-green-800 retro-shadow p-6 text-center relative slide-in-right delay-2">
+                            <!-- Nakładka NAJLEPSZE -->
+                            <div class="absolute -top-2 -right-2 bg-yellow-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
+                                NAJLEPSZE!
                             </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_6.png" alt="Alfa Romeo Spider 1966" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_6.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-gray-700">500</span>
-                                </div>
-                                <button onclick="buyPost('Alfa Romeo Spider 1966', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-green-800">
+                                    <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#166534" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="6" fill="#22C55E"/>
+                                    <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">MAX</text>
+                                </svg>
+                                <span class="text-xl font-bold text-green-800">Pełny Karnet</span>
                             </div>
+                            <p class="text-gray-600 mb-4">Odblokuj wszystkie poziomy do końca</p>
+                            <p class="text-xl font-bold text-red-900 mb-4">24,99 zł</p>
+                            <button onclick="buyFullPass()" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200" id="full-pass-btn">
+                                Kup pełny karnet
+                            </button>
                         </div>
-
-                        <!-- 4. Mercedes-Benz 300SL Gullwing 1955 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-left delay-6">
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Mercedes-Benz 300SL Gullwing 1955</h4>
-                            </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_7.png" alt="Mercedes-Benz 300SL Gullwing 1955" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_7.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-gray-700">500</span>
-                                </div>
-                                <button onclick="buyPost('Mercedes-Benz 300SL Gullwing 1955', 500)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- 5. Toyota 2000GT 1967 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-up delay-1">
-                            <!-- Nakładka przeceny -->
-                            <div class="absolute -top-2 -right-2 bg-red-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
-                                PRZECENA!
-                            </div>
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Toyota 2000GT 1967</h4>
-                            </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_8.png" alt="Toyota 2000GT 1967" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_8.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-red-600 line-through text-sm">500</span>
-                                    <span class="font-bold text-green-600 text-lg">300</span>
-                                </div>
-                                <button onclick="buyPost('Toyota 2000GT 1967', 300)" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- 6. Pontiac GTO 1967 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow slide-in-right delay-2">
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Pontiac GTO 1967</h4>
-                            </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_9.png" alt="Pontiac GTO 1967" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_9.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-gray-700">500</span>
-                                </div>
-                                <button onclick="buyPost('Pontiac GTO 1967', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- 7. Fiat 125p -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-left delay-3">
-                            <!-- Nakładka NOWE -->
-                            <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
-                                NOWE!
-                            </div>
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Fiat 125p</h4>
-                            </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_10.png" alt="Fiat 125p" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_10.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-gray-700">500</span>
-                                </div>
-                                <button onclick="buyPost('Fiat 125p', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- 8. Lancia Delta -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-up delay-4">
-                            <!-- Nakładka NOWE -->
-                            <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
-                                NOWE!
-                            </div>
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Lancia Delta</h4>
-                            </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_11.png" alt="Lancia Delta" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_11.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-gray-700">500</span>
-                                </div>
-                                <button onclick="buyPost('Lancia Delta', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- 9. Nysa 522 -->
-                        <div class="card-hover bg-white border-4 border-red-900 retro-shadow relative slide-in-right delay-5">
-                            <!-- Nakładka NOWE -->
-                            <div class="absolute -top-2 -right-2 bg-blue-600 text-white px-3 py-1 rounded-full font-bold text-sm z-10 retro-shadow">
-                                NOWE!
-                            </div>
-                            <div class="bg-red-900 p-4">
-                                <h4 class="pacyfico text-lg text-white text-center">Nysa 522</h4>
-                            </div>
-                            <div class="p-4">
-                                <div class="w-full h-32 bg-gray-200 mb-4 flex items-center justify-center border-2 border-gray-400">
-                                    <img src="zdjęcie_12.png" alt="Nysa 522" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Zdjęcie niedostępne'; this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-500 text-sm\'>zdjęcie_12.png</span>';">
-                                </div>
-                                <div class="flex items-center justify-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-yellow-600">
-                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
-                                        <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
-                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
-                                    </svg>
-                                    <span class="font-bold text-gray-700">500</span>
-                                </div>
-                                <button onclick="buyPost('Nysa 522', 500)" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
-                                    Kup
-                                </button>
-                            </div>
-                        </div>
-
-
                     </div>
                 </div>
 
                 <!-- Oferty Monetek -->
                 <div>
-                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6 slide-in-up delay-6">Oferty Monetek</h3>
+                    <h3 class="pacyfico text-2xl text-red-900 text-center mb-6 slide-in-up delay-7">Oferty Monetek</h3>
                     
-                    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="flex justify-center gap-4 max-w-4xl mx-auto">
                         <!-- 500 Monet -->
-                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center slide-in-left delay-1">
-                            <div class="flex items-center justify-center gap-2 mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-4 text-center flex-1 max-w-xs slide-in-left delay-1">
+                            <div class="flex items-center justify-center gap-1 mb-3">
+                                <svg width="24" height="24" viewBox="0 0 24 24" class="text-yellow-600">
                                     <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
                                     <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
                                     <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
                                 </svg>
-                                <span class="text-2xl font-bold text-gray-700">500</span>
+                                <span class="text-lg font-bold text-gray-700">500</span>
                             </div>
-                            <p class="text-xl font-bold text-red-900 mb-4">2,99 zł</p>
-                            <button onclick="buyCoins(500, '2,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            <p class="text-lg font-bold text-red-900 mb-3">2,99 zł</p>
+                            <button onclick="buyCoins(500, '2,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
                                 Kup
                             </button>
                         </div>
 
                         <!-- 1000 Monet -->
-                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center slide-in-up delay-2">
-                            <div class="flex items-center justify-center gap-2 mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-4 text-center flex-1 max-w-xs slide-in-up delay-2">
+                            <div class="flex items-center justify-center gap-1 mb-3">
+                                <svg width="24" height="24" viewBox="0 0 24 24" class="text-yellow-600">
                                     <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
                                     <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
                                     <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
                                 </svg>
-                                <span class="text-2xl font-bold text-gray-700">1000</span>
+                                <span class="text-lg font-bold text-gray-700">1000</span>
                             </div>
-                            <p class="text-xl font-bold text-red-900 mb-4">4,99 zł</p>
-                            <button onclick="buyCoins(1000, '4,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            <p class="text-lg font-bold text-red-900 mb-3">4,99 zł</p>
+                            <button onclick="buyCoins(1000, '4,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
                                 Kup
                             </button>
                         </div>
 
                         <!-- 1500 Monet -->
-                        <div class="bg-white border-4 border-red-900 retro-shadow p-6 text-center slide-in-right delay-3">
-                            <div class="flex items-center justify-center gap-2 mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" class="text-yellow-600">
+                        <div class="bg-white border-4 border-red-900 retro-shadow p-4 text-center flex-1 max-w-xs slide-in-right delay-3">
+                            <div class="flex items-center justify-center gap-1 mb-3">
+                                <svg width="24" height="24" viewBox="0 0 24 24" class="text-yellow-600">
                                     <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#B45309" stroke-width="2"/>
                                     <circle cx="12" cy="12" r="6" fill="#FCD34D"/>
                                     <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">M</text>
                                 </svg>
-                                <span class="text-2xl font-bold text-gray-700">1500</span>
+                                <span class="text-lg font-bold text-gray-700">1500</span>
                             </div>
-                            <p class="text-xl font-bold text-red-900 mb-4">7,99 zł</p>
-                            <button onclick="buyCoins(1500, '7,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                            <p class="text-lg font-bold text-red-900 mb-3">7,99 zł</p>
+                            <button onclick="buyCoins(1500, '7,99 zł')" class="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-1 px-3 retro-shadow transition-all duration-200 text-sm">
                                 Kup
                             </button>
                         </div>
@@ -907,6 +952,7 @@
         let passLevel = 1;
         let passCredits = 0;
         let claimedPassRewards = [];
+        let fullPassPurchased = false;
 
         // Load saved data
         function loadGameData() {
@@ -937,6 +983,7 @@
                 passLevel = data.passLevel || 1;
                 passCredits = data.passCredits || 0;
                 claimedPassRewards = data.claimedPassRewards || [];
+                fullPassPurchased = data.fullPassPurchased || false;
             } else {
                 // Set initial values only if no saved data exists
                 coins = 0;
@@ -963,6 +1010,7 @@
                 passLevel = 1;
                 passCredits = 0;
                 claimedPassRewards = [];
+                fullPassPurchased = false;
             }
         }
 
@@ -989,7 +1037,8 @@
                 dailyGiftAvailable,
                 passLevel,
                 passCredits,
-                claimedPassRewards
+                claimedPassRewards,
+                fullPassPurchased
             };
             localStorage.setItem('retroBlogData', JSON.stringify(data));
         }
@@ -1869,6 +1918,7 @@
             updatePassProgress();
             checkDailyGiftAvailability();
             startDailyGiftCountdown();
+            updateFullPassButton();
             showSection('wpisy');
         });
         
@@ -2101,6 +2151,181 @@
             }
         }
 
+        // Pass purchase functions
+        function buyPassLevel() {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
+            if (passLevel >= 30) {
+                // Już maksymalny poziom
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 shake-effect';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-red-900 mb-4">Maksymalny poziom</h3>
+                    <p class="mb-4">Osiągnąłeś już maksymalny poziom w Karnecie Retro!</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+                return;
+            }
+            
+            // Show payment message
+            const message = document.createElement('div');
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 bounce-effect';
+            message.innerHTML = `
+                <h3 class="pacyfico text-xl text-green-800 mb-4">Płatność</h3>
+                <p class="mb-4">Przekaż kwotę 0,99 zł właścicielowi Bloga</p>
+                <p class="mb-4 text-sm text-gray-600">Otrzymasz +1 poziom w Karnecie Retro</p>
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); confirmPassLevelPurchase();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                    Potwierdzam płatność
+                </button>
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow ml-2 click-effect">
+                    Anuluj
+                </button>
+            `;
+            document.body.appendChild(message);
+        }
+        
+        function confirmPassLevelPurchase() {
+            // Zwiększ poziom o 1
+            passLevel++;
+            
+            // Dodaj odpowiednią ilość kredytów, żeby poziom się zgadzał
+            const requiredCredits = getRequiredCreditsForLevel(passLevel);
+            passCredits += requiredCredits;
+            
+            updatePassProgress();
+            saveGameData();
+            
+            // Show success message
+            const message = document.createElement('div');
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 color-explosion';
+            message.innerHTML = `
+                <h3 class="pacyfico text-xl text-green-800 mb-4">Poziom kupiony!</h3>
+                <p class="mb-4">Awansowałeś na poziom ${passLevel} w Karnecie Retro!</p>
+                <p class="mb-4 text-sm">Sprawdź swoje nowe nagrody w sekcji Karnet Retro.</p>
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); showSection('karnet');" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                    Przejdź do karnetu
+                </button>
+            `;
+            document.body.appendChild(message);
+        }
+        
+        function buyFullPass() {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
+            if (fullPassPurchased) {
+                // Już kupiony
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 shake-effect';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-red-900 mb-4">Już kupione</h3>
+                    <p class="mb-4">Pełny Karnet Retro został już wcześniej zakupiony!</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+                return;
+            }
+            
+            if (passLevel >= 30) {
+                // Już maksymalny poziom
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-red-900 retro-shadow p-6 z-50 shake-effect';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-red-900 mb-4">Maksymalny poziom</h3>
+                    <p class="mb-4">Osiągnąłeś już maksymalny poziom w Karnecie Retro!</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+                return;
+            }
+            
+            // Show payment message
+            const message = document.createElement('div');
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 bounce-effect';
+            message.innerHTML = `
+                <h3 class="pacyfico text-xl text-green-800 mb-4">Płatność</h3>
+                <p class="mb-4">Przekaż kwotę 24,99 zł właścicielowi Bloga</p>
+                <p class="mb-4 text-sm text-gray-600">Otrzymasz wszystkie poziomy do końca (30) + wszystkie nagrody!</p>
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); confirmFullPassPurchase();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                    Potwierdzam płatność
+                </button>
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-4 retro-shadow ml-2 click-effect">
+                    Anuluj
+                </button>
+            `;
+            document.body.appendChild(message);
+        }
+        
+        function confirmFullPassPurchase() {
+            // Ustaw maksymalny poziom
+            passLevel = 30;
+            
+            // Dodaj wszystkie potrzebne kredyty
+            let totalCreditsNeeded = 0;
+            for (let i = 1; i <= 30; i++) {
+                totalCreditsNeeded += getRequiredCreditsForLevel(i);
+            }
+            passCredits = totalCreditsNeeded;
+            
+            // Oznacz jako kupiony
+            fullPassPurchased = true;
+            
+            // Dodaj wszystkie nagrody (oprócz Syreny 105, którą trzeba odebrać ręcznie)
+            let totalCoinsFromPass = 0;
+            for (let i = 1; i < 30; i++) {
+                if (!claimedPassRewards.includes(i)) {
+                    totalCoinsFromPass += 80;
+                    claimedPassRewards.push(i);
+                }
+            }
+            
+            coins += totalCoinsFromPass;
+            totalCoinsEarned += totalCoinsFromPass;
+            
+            updateCoinDisplay();
+            updateMissionProgress();
+            updatePassProgress();
+            updateFullPassButton();
+            saveGameData();
+            
+            // Create confetti
+            createConfetti();
+            
+            // Show success message
+            const message = document.createElement('div');
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 color-explosion';
+            message.innerHTML = `
+                <h3 class="pacyfico text-xl text-green-800 mb-4">Pełny Karnet kupiony!</h3>
+                <p class="mb-4">Osiągnąłeś maksymalny poziom 30!</p>
+                <p class="mb-4">Otrzymałeś ${totalCoinsFromPass} monet z nagród!</p>
+                <p class="mb-4 text-sm">Pamiętaj o odebraniu ekskluzywnego wpisu "Syrena 105" z poziomu 30!</p>
+                <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); showSection('karnet');" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                    Przejdź do karnetu
+                </button>
+            `;
+            document.body.appendChild(message);
+        }
+        
+        function updateFullPassButton() {
+            const fullPassBtn = document.getElementById('full-pass-btn');
+            if (fullPassBtn) {
+                if (fullPassPurchased || passLevel >= 30) {
+                    fullPassBtn.textContent = 'Już kupione';
+                    fullPassBtn.className = 'w-full bg-gray-600 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
+                    fullPassBtn.disabled = true;
+                    fullPassBtn.onclick = null;
+                }
+            }
+        }
+
         // Initialize immediately
         loadGameData();
         updateCoinDisplay();
@@ -2110,7 +2335,7 @@
         updatePassProgress();
         checkDailyGiftAvailability();
         startDailyGiftCountdown();
+        updateFullPassButton();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f57d37c4ed6351',t:'MTc2MDU5NjAzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f6f44ba19b265d',t:'MTc2MDYxMTM5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-

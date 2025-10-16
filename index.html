@@ -193,6 +193,42 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
+        
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear forwards;
+        }
+        
+        .confetti-piece:nth-child(2n) { background: #4ecdc4; }
+        .confetti-piece:nth-child(3n) { background: #45b7d1; }
+        .confetti-piece:nth-child(4n) { background: #96ceb4; }
+        .confetti-piece:nth-child(5n) { background: #ffeaa7; }
+        .confetti-piece:nth-child(6n) { background: #dda0dd; }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body class="min-h-full" style="background-color: #f5f5dc;">
@@ -234,6 +270,9 @@
                     </button>
                     <button onclick="showSection('misje')" id="btn-misje" class="nav-button bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200 slide-in-right delay-4">
                         Misje
+                    </button>
+                    <button onclick="showSection('karnet')" id="btn-karnet" class="nav-button bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-6 retro-shadow transition-all duration-200 slide-in-left delay-5">
+                        Karnet Retro
                     </button>
                 </nav>
             </div>
@@ -725,13 +764,100 @@
                             Odbierz nagrodę
                         </button>
                     </div>
+
+                    <!-- Misja 4: Wydawanie monet -->
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6 slide-in-right delay-5">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="pacyfico text-xl text-red-900">Misja Wydawcy</h3>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-blue-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#1E40AF" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#60A5FA"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E40AF">K</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-700 mb-2">Etap <span id="spending-stage">1</span>: Wydaj łącznie <span id="spending-target">500</span> monet</p>
+                            <div class="bg-gray-200 rounded-full h-4 mb-2">
+                                <div id="spending-progress" class="bg-green-600 h-4 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600">Postęp: <span id="spending-current">0</span>/<span id="spending-target-text">500</span></p>
+                        </div>
+                        <button id="spending-claim" onclick="claimSpendingReward()" class="bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed" disabled>
+                            Odbierz nagrodę
+                        </button>
+                    </div>
+
+                    <!-- Misja 5: Codzienny prezent -->
+                    <div class="bg-white border-4 border-red-900 retro-shadow p-6 slide-in-left delay-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="pacyfico text-xl text-red-900">Misja Regularności</h3>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-blue-600">
+                                        <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#1E40AF" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="6" fill="#60A5FA"/>
+                                        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E40AF">K</text>
+                                    </svg>
+                                    <span class="font-bold text-gray-700">1500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-700 mb-2">Etap <span id="daily-gift-stage">1</span>: Odbierz codzienny prezent przez <span id="daily-gift-target">7</span> dni</p>
+                            <div class="bg-gray-200 rounded-full h-4 mb-2">
+                                <div id="daily-gift-progress" class="bg-green-600 h-4 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600">Postęp: <span id="daily-gift-current">0</span>/<span id="daily-gift-target-text">7</span></p>
+                        </div>
+                        <button id="daily-gift-claim" onclick="claimDailyGiftMissionReward()" class="bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed" disabled>
+                            Odbierz nagrodę
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karnet Retro Section -->
+            <div id="karnet-section" class="section hidden">
+                <h2 class="pacyfico text-3xl text-red-900 text-center mb-8 slide-in-up delay-1">Karnet Retro</h2>
+                
+                <div class="max-w-6xl mx-auto">
+                    <!-- Progress Header -->
+                    <div class="bg-white border-4 border-green-800 retro-shadow p-6 mb-8 text-center slide-in-up delay-2">
+                        <div class="flex items-center justify-center gap-4 mb-4">
+                            <svg width="40" height="40" viewBox="0 0 24 24" class="text-green-800">
+                                <circle cx="12" cy="12" r="10" fill="currentColor" stroke="#166534" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="6" fill="#22C55E"/>
+                                <text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">R</text>
+                            </svg>
+                            <div>
+                                <h3 class="pacyfico text-2xl text-green-800">Poziom <span id="pass-level">1</span></h3>
+                                <p class="text-gray-700">Postęp: <span id="pass-progress">0</span>/<span id="pass-required">1000</span> kredytów</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-200 rounded-full h-6 mb-4">
+                            <div id="pass-progress-bar" class="bg-green-600 h-6 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-600">Zdobywaj kredyty wykonując misje i kupując wpisy!</p>
+                    </div>
+                    
+                    <!-- Pass Levels Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <!-- Levels will be generated by JavaScript -->
+                    </div>
                 </div>
             </div>
 
             <!-- Post View Section -->
             <div id="post-section" class="section hidden">
                 <div class="max-w-3xl mx-auto">
-                    <button onclick="showSection('wpisy')" class="mb-6 bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
+                    <button onclick="returnToPostsWithReward()" class="mb-6 bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow transition-all duration-200">
                         ← Powrót do wpisów
                     </button>
                     <div class="bg-white border-4 border-red-900 retro-shadow p-8">
@@ -758,6 +884,7 @@
         let credits = 0;
         let ownedPosts = [];
         let readPosts = [];
+        let readPostsRewarded = []; // Track which posts have been rewarded for reading
         let availableShopPosts = ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967', 'Fiat 125p', 'Lancia Delta', 'Nysa 522'];
         
         // Mission progress
@@ -767,10 +894,19 @@
         let buyingProgress = 0;
         let collectingStage = 1;
         let totalCoinsEarned = 0;
+        let spendingStage = 1;
+        let totalCoinsSpent = 0;
+        let dailyGiftStage = 1;
+        let dailyGiftsCollected = 0;
         
         // Daily gift system
         let lastDailyGiftTime = 0;
         let dailyGiftAvailable = true;
+        
+        // Pass system
+        let passLevel = 1;
+        let passCredits = 0;
+        let claimedPassRewards = [];
 
         // Load saved data
         function loadGameData() {
@@ -781,6 +917,7 @@
                 credits = data.credits || 0;
                 ownedPosts = data.ownedPosts || [];
                 readPosts = data.readPosts || [];
+                readPostsRewarded = data.readPostsRewarded || [];
                 availableShopPosts = data.availableShopPosts || ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967', 'Fiat 125p', 'Lancia Delta', 'Nysa 522'];
                 
                 readingStage = data.readingStage || 1;
@@ -789,15 +926,24 @@
                 buyingProgress = data.buyingProgress || 0;
                 collectingStage = data.collectingStage || 1;
                 totalCoinsEarned = data.totalCoinsEarned || 0;
+                spendingStage = data.spendingStage || 1;
+                totalCoinsSpent = data.totalCoinsSpent || 0;
+                dailyGiftStage = data.dailyGiftStage || 1;
+                dailyGiftsCollected = data.dailyGiftsCollected || 0;
                 
                 lastDailyGiftTime = data.lastDailyGiftTime || 0;
                 dailyGiftAvailable = data.dailyGiftAvailable !== undefined ? data.dailyGiftAvailable : true;
+                
+                passLevel = data.passLevel || 1;
+                passCredits = data.passCredits || 0;
+                claimedPassRewards = data.claimedPassRewards || [];
             } else {
                 // Set initial values only if no saved data exists
                 coins = 0;
                 credits = 0;
                 ownedPosts = [];
                 readPosts = [];
+                readPostsRewarded = [];
                 availableShopPosts = ['Porsche 911 Carrera 1973', 'Dodge Charger R/T 1969', 'Alfa Romeo Spider 1966', 'Mercedes-Benz 300SL Gullwing 1955', 'Toyota 2000GT 1967', 'Pontiac GTO 1967', 'Fiat 125p', 'Lancia Delta', 'Nysa 522'];
                 
                 readingStage = 1;
@@ -806,9 +952,17 @@
                 buyingProgress = 0;
                 collectingStage = 1;
                 totalCoinsEarned = 0;
+                spendingStage = 1;
+                totalCoinsSpent = 0;
+                dailyGiftStage = 1;
+                dailyGiftsCollected = 0;
                 
                 lastDailyGiftTime = 0;
                 dailyGiftAvailable = true;
+                
+                passLevel = 1;
+                passCredits = 0;
+                claimedPassRewards = [];
             }
         }
 
@@ -819,6 +973,7 @@
                 credits,
                 ownedPosts,
                 readPosts,
+                readPostsRewarded,
                 availableShopPosts,
                 readingStage,
                 readingProgress,
@@ -826,8 +981,15 @@
                 buyingProgress,
                 collectingStage,
                 totalCoinsEarned,
+                spendingStage,
+                totalCoinsSpent,
+                dailyGiftStage,
+                dailyGiftsCollected,
                 lastDailyGiftTime,
-                dailyGiftAvailable
+                dailyGiftAvailable,
+                passLevel,
+                passCredits,
+                claimedPassRewards
             };
             localStorage.setItem('retroBlogData', JSON.stringify(data));
         }
@@ -835,6 +997,27 @@
         function updateCoinDisplay() {
             document.getElementById('coin-count').textContent = coins;
             document.getElementById('credit-count').textContent = credits;
+        }
+
+        // Confetti function
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti';
+            document.body.appendChild(confettiContainer);
+            
+            for (let i = 0; i < 50; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.className = 'confetti-piece';
+                confettiPiece.style.left = Math.random() * 100 + '%';
+                confettiPiece.style.animationDelay = Math.random() * 3 + 's';
+                confettiPiece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confettiContainer.appendChild(confettiPiece);
+            }
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                document.body.removeChild(confettiContainer);
+            }, 5000);
         }
 
         // Funkcje intensywnych efektów
@@ -882,6 +1065,7 @@
             
             if (coins >= cost) {
                 coins -= cost;
+                totalCoinsSpent += cost;
                 ownedPosts.push(postTitle);
                 
                 // Remove from available shop posts
@@ -956,6 +1140,9 @@
                     } else if (postTitle === 'Nysa 522') {
                         imageSrc = 'zdjęcie_12.png';
                         imageAlt = 'Nysa 522';
+                    } else if (postTitle === 'Syrena 105') {
+                        imageSrc = 'zdjecie_13.png';
+                        imageAlt = 'Syrena 105';
                     }
                     
                     const isRead = readPosts.includes(postTitle);
@@ -991,7 +1178,7 @@
                 const titleElement = card.querySelector('h4');
                 if (titleElement) {
                     const postTitle = titleElement.textContent;
-                    if (!availableShopPosts.includes(postTitle)) {
+                    if (ownedPosts.includes(postTitle)) {
                         card.style.display = 'none';
                     } else {
                         card.style.display = 'block';
@@ -1029,6 +1216,142 @@
             if (activeBtn) {
                 activeBtn.style.transform = 'translateY(2px)';
                 activeBtn.style.boxShadow = '1px 1px 0px #8b4513';
+            }
+        }
+
+        // Pass system functions
+        function getRequiredCreditsForLevel(level) {
+            if (level <= 20) {
+                return 1500;
+            } else {
+                return 3000;
+            }
+        }
+        
+        function updatePassProgress() {
+            // Calculate current level based on credits
+            let totalCreditsNeeded = 0;
+            let currentLevel = 1;
+            
+            for (let i = 1; i <= 30; i++) {
+                const creditsForThisLevel = getRequiredCreditsForLevel(i);
+                if (passCredits >= totalCreditsNeeded + creditsForThisLevel) {
+                    totalCreditsNeeded += creditsForThisLevel;
+                    currentLevel = i + 1;
+                } else {
+                    break;
+                }
+            }
+            
+            passLevel = Math.min(currentLevel, 30);
+            
+            // Calculate progress for current level
+            let creditsUsed = 0;
+            for (let i = 1; i < passLevel; i++) {
+                creditsUsed += getRequiredCreditsForLevel(i);
+            }
+            
+            const creditsForCurrentLevel = getRequiredCreditsForLevel(passLevel);
+            const currentLevelProgress = passCredits - creditsUsed;
+            const progressPercent = passLevel >= 30 ? 100 : Math.min((currentLevelProgress / creditsForCurrentLevel) * 100, 100);
+            
+            // Update UI
+            document.getElementById('pass-level').textContent = passLevel;
+            document.getElementById('pass-progress').textContent = passLevel >= 30 ? creditsForCurrentLevel : currentLevelProgress;
+            document.getElementById('pass-required').textContent = creditsForCurrentLevel;
+            document.getElementById('pass-progress-bar').style.width = progressPercent + '%';
+            
+            // Generate pass levels grid
+            generatePassLevels();
+        }
+        
+        function generatePassLevels() {
+            const grid = document.querySelector('#karnet-section .grid');
+            grid.innerHTML = '';
+            
+            for (let level = 1; level <= 30; level++) {
+                const isUnlocked = level <= passLevel;
+                const isClaimed = claimedPassRewards.includes(level);
+                const canClaim = isUnlocked && !isClaimed;
+                
+                let reward = '80 Monet';
+                if (level === 30) {
+                    reward = 'Syrena 105';
+                }
+                
+                const levelCard = document.createElement('div');
+                levelCard.className = `bg-white border-4 ${isUnlocked ? 'border-green-800' : 'border-gray-400'} retro-shadow p-4 text-center`;
+                
+                let buttonHtml = '';
+                if (isClaimed) {
+                    buttonHtml = `<button class="w-full bg-gray-600 text-white font-bold py-2 px-3 retro-shadow cursor-not-allowed text-sm" disabled>Odebrano</button>`;
+                } else if (canClaim) {
+                    buttonHtml = `<button onclick="claimPassReward(${level})" class="click-effect w-full bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-3 retro-shadow transition-all duration-200 text-sm">Odbierz</button>`;
+                } else {
+                    buttonHtml = `<button class="w-full bg-gray-400 text-white font-bold py-2 px-3 retro-shadow cursor-not-allowed text-sm" disabled>Zablokowane</button>`;
+                }
+                
+                levelCard.innerHTML = `
+                    <div class="mb-3">
+                        <div class="w-12 h-12 mx-auto mb-2 ${isUnlocked ? 'bg-green-800' : 'bg-gray-400'} rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">${level}</span>
+                        </div>
+                        <p class="text-sm font-bold ${isUnlocked ? 'text-green-800' : 'text-gray-500'}">${reward}</p>
+                    </div>
+                    ${buttonHtml}
+                `;
+                
+                grid.appendChild(levelCard);
+            }
+        }
+        
+        function claimPassReward(level) {
+            addIntenseClickEffect(event.target);
+            
+            if (level <= passLevel && !claimedPassRewards.includes(level)) {
+                claimedPassRewards.push(level);
+                
+                if (level === 30) {
+                    // Special reward: Syrena 105 post
+                    ownedPosts.push('Syrena 105');
+                    
+                    // Show special message
+                    const message = document.createElement('div');
+                    message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 color-explosion';
+                    message.innerHTML = `
+                        <h3 class="pacyfico text-xl text-green-800 mb-4">Gratulacje!</h3>
+                        <p class="mb-4">Odblokowałeś ekskluzywny wpis "Syrena 105"!</p>
+                        <p class="mb-4">Wpis został dodany do Twoich wpisów.</p>
+                        <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); showSection('wpisy');" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                            Przejdź do wpisów
+                        </button>
+                    `;
+                    document.body.appendChild(message);
+                    
+                    updatePostsDisplay();
+                } else {
+                    // Regular reward: 80 coins
+                    coins += 80;
+                    totalCoinsEarned += 80;
+                    
+                    // Show reward message
+                    const message = document.createElement('div');
+                    message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 pulse-effect';
+                    message.innerHTML = `
+                        <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
+                        <p class="mb-4">Otrzymałeś 80 monet z poziomu ${level}!</p>
+                        <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                            OK
+                        </button>
+                    `;
+                    document.body.appendChild(message);
+                    
+                    updateCoinDisplay();
+                }
+                
+                updateMissionProgress();
+                updatePassProgress();
+                saveGameData();
             }
         }
 
@@ -1089,6 +1412,44 @@
                 collectingClaimBtn.disabled = true;
                 collectingClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
             }
+            
+            // Update spending mission
+            const spendingTarget = spendingStage * 500;
+            const spendingPercent = Math.min((totalCoinsSpent / spendingTarget) * 100, 100);
+            
+            document.getElementById('spending-stage').textContent = spendingStage;
+            document.getElementById('spending-target').textContent = spendingTarget;
+            document.getElementById('spending-target-text').textContent = spendingTarget;
+            document.getElementById('spending-current').textContent = totalCoinsSpent;
+            document.getElementById('spending-progress').style.width = spendingPercent + '%';
+            
+            const spendingClaimBtn = document.getElementById('spending-claim');
+            if (totalCoinsSpent >= spendingTarget) {
+                spendingClaimBtn.disabled = false;
+                spendingClaimBtn.className = 'bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow cursor-pointer';
+            } else {
+                spendingClaimBtn.disabled = true;
+                spendingClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
+            }
+            
+            // Update daily gift mission
+            const dailyGiftTarget = 7;
+            const dailyGiftPercent = Math.min((dailyGiftsCollected / dailyGiftTarget) * 100, 100);
+            
+            document.getElementById('daily-gift-stage').textContent = dailyGiftStage;
+            document.getElementById('daily-gift-target').textContent = dailyGiftTarget;
+            document.getElementById('daily-gift-target-text').textContent = dailyGiftTarget;
+            document.getElementById('daily-gift-current').textContent = dailyGiftsCollected;
+            document.getElementById('daily-gift-progress').style.width = dailyGiftPercent + '%';
+            
+            const dailyGiftClaimBtn = document.getElementById('daily-gift-claim');
+            if (dailyGiftsCollected >= dailyGiftTarget) {
+                dailyGiftClaimBtn.disabled = false;
+                dailyGiftClaimBtn.className = 'bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow cursor-pointer';
+            } else {
+                dailyGiftClaimBtn.disabled = true;
+                dailyGiftClaimBtn.className = 'bg-gray-400 text-white font-bold py-2 px-4 retro-shadow cursor-not-allowed';
+            }
         }
 
         function claimReadingReward() {
@@ -1103,11 +1464,13 @@
                 coins += coinReward;
                 totalCoinsEarned += coinReward;
                 credits += creditReward;
+                passCredits += creditReward;
                 readingStage++;
                 readingProgress = 0;
                 
                 updateCoinDisplay();
                 updateMissionProgress();
+                updatePassProgress();
                 saveGameData();
                 
                 // Show reward message
@@ -1136,11 +1499,13 @@
                 coins += coinReward;
                 totalCoinsEarned += coinReward;
                 credits += creditReward;
+                passCredits += creditReward;
                 buyingStage++;
                 buyingProgress = 0;
                 
                 updateCoinDisplay();
                 updateMissionProgress();
+                updatePassProgress();
                 saveGameData();
                 
                 // Show reward message
@@ -1170,10 +1535,12 @@
                 coins += coinReward;
                 totalCoinsEarned += coinReward;
                 credits += creditReward;
+                passCredits += creditReward;
                 collectingStage++;
                 
                 updateCoinDisplay();
                 updateMissionProgress();
+                updatePassProgress();
                 saveGameData();
                 
                 const nextTarget = collectingStage * 500;
@@ -1193,9 +1560,81 @@
             }
         }
 
+        function claimSpendingReward() {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
+            const spendingTarget = spendingStage * 500;
+            if (totalCoinsSpent >= spendingTarget) {
+                const creditReward = 500;
+                
+                credits += creditReward;
+                passCredits += creditReward;
+                spendingStage++;
+                
+                updateCoinDisplay();
+                updateMissionProgress();
+                updatePassProgress();
+                saveGameData();
+                
+                const nextTarget = spendingStage * 500;
+                
+                // Show reward message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 pulse-effect';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
+                    <p class="mb-4">Otrzymałeś ${creditReward} kredytów!</p>
+                    <p class="mb-4">Następny etap: Wydaj łącznie ${nextTarget} monet</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+            }
+        }
+
+        function claimDailyGiftMissionReward() {
+            // Dodaj efekt do klikniętego przycisku
+            addIntenseClickEffect(event.target);
+            
+            if (dailyGiftsCollected >= 7) {
+                const creditReward = 1500;
+                
+                credits += creditReward;
+                passCredits += creditReward;
+                dailyGiftStage++;
+                dailyGiftsCollected = 0; // Reset counter for next stage
+                
+                updateCoinDisplay();
+                updateMissionProgress();
+                updatePassProgress();
+                saveGameData();
+                
+                // Show reward message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 color-explosion';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda odebrana!</h3>
+                    <p class="mb-4">Otrzymałeś ${creditReward} kredytów za regularność!</p>
+                    <p class="mb-4">Następny etap: Odbierz codzienny prezent przez kolejne 7 dni</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove();" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        Świetnie!
+                    </button>
+                `;
+                document.body.appendChild(message);
+            }
+        }
+
+        // Store current post title for reward system
+        let currentPostTitle = '';
+
         function openPost(title) {
             // Dodaj efekt do klikniętego przycisku
             addIntenseClickEffect(event.target);
+            
+            // Store current post title
+            currentPostTitle = title;
             
             // Mark as read if not already read
             if (!readPosts.includes(title)) {
@@ -1321,6 +1760,10 @@
                 postContent.innerHTML = `
                     <p class="text-center italic">Treść pojawi się już wkrótce...</p>
                 `;
+            } else if (title === 'Syrena 105') {
+                postContent.innerHTML = `
+                    <p class="text-center italic">Treść już wkrótce...</p>
+                `;
             } else if (title === 'Mercedes-Benz 300SL Gullwing 1955') {
                 postContent.innerHTML = `
                     <p>Mercedes-Benz 300SL Gullwing z 1955 roku to samochód, który do dziś budzi respekt zarówno wśród kolekcjonerów, jak i miłośników motoryzacji. To nie tylko elegancki klasyk, ale też maszyna, która w połowie lat 50. była absolutnym szczytem technologii. Powstał na bazie wyścigowego modelu 300SL z Le Mans, a jego konstrukcja i osiągi były wręcz kosmiczne jak na swoje czasy.</p>
@@ -1378,6 +1821,44 @@
             showSection('post');
         }
 
+        function returnToPostsWithReward() {
+            // Check if current post should give reading reward
+            if (currentPostTitle && !readPostsRewarded.includes(currentPostTitle)) {
+                // Add to rewarded posts
+                readPostsRewarded.push(currentPostTitle);
+                
+                // Give reward
+                credits += 200;
+                passCredits += 200;
+                
+                // Update displays
+                updateCoinDisplay();
+                updatePassProgress();
+                saveGameData();
+                
+                // Create confetti
+                createConfetti();
+                
+                // Show reward message
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-4 border-green-800 retro-shadow p-6 z-50 bounce-effect';
+                message.innerHTML = `
+                    <h3 class="pacyfico text-xl text-green-800 mb-4">Nagroda za czytanie!</h3>
+                    <p class="mb-4">Otrzymałeś 200 kredytów za przeczytanie wpisu "${currentPostTitle}"!</p>
+                    <button onclick="addIntenseClickEffect(this); this.parentElement.remove(); showSection('wpisy');" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 retro-shadow click-effect">
+                        OK
+                    </button>
+                `;
+                document.body.appendChild(message);
+            } else {
+                // No reward, just go back
+                showSection('wpisy');
+            }
+            
+            // Clear current post
+            currentPostTitle = '';
+        }
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             loadGameData();
@@ -1385,6 +1866,7 @@
             updatePostsDisplay();
             updateShopDisplay();
             updateMissionProgress();
+            updatePassProgress();
             checkDailyGiftAvailability();
             startDailyGiftCountdown();
             showSection('wpisy');
@@ -1497,14 +1979,19 @@
                 totalCoinsEarned += amount;
             } else if (type === 'credits') {
                 credits += amount;
+                passCredits += amount;
             }
             
             // Ustaw czas ostatniego odebrania prezentu
             lastDailyGiftTime = Date.now();
             dailyGiftAvailable = false;
             
+            // Update daily gift mission progress
+            dailyGiftsCollected++;
+            
             updateCoinDisplay();
             updateMissionProgress();
+            updatePassProgress();
             updateDailyGiftDisplay();
             saveGameData();
             
@@ -1620,8 +2107,10 @@
         updatePostsDisplay();
         updateShopDisplay();
         updateMissionProgress();
+        updatePassProgress();
         checkDailyGiftAvailability();
         startDailyGiftCountdown();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f15ce4e5a1b621',t:'MTc2MDU1Mjc2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f57d37c4ed6351',t:'MTc2MDU5NjAzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
